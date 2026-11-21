@@ -1,0 +1,27 @@
+Built-in books license / Лицензия встроенных книг
+
+The texts of the books in src/books/ ("Inside Clipper", "Zig for the backend",
+"The 2003 Web for the backend")
+Copyright (c) 2026 Yury Slinkin <slnknrr.dev@gmail.com>
+are licensed under Creative Commons Attribution-ShareAlike 4.0 International
+(CC BY-SA 4.0).
+
+Тексты книг в src/books/ («Изнанка Клиппера», «Zig для backend»,
+«Web 2003 года для backend»)
+Copyright (c) 2026 Yury Slinkin <slnknrr.dev@gmail.com>
+распространяются по лицензии Creative Commons Attribution-ShareAlike 4.0
+International (CC BY-SA 4.0).
+
+  Summary:    https://creativecommons.org/licenses/by-sa/4.0/
+  Legal code: https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+You may copy, redistribute, translate and adapt the material for any purpose,
+even commercially — with attribution, a link to the license, and under the
+same license.
+
+Можно копировать, распространять, переводить и переделывать, в том числе в
+коммерческих целях, — с указанием автора, ссылкой на лицензию и под той же
+лицензией.
+
+Program code is licensed separately under the MIT License — see LICENSE.
+Код программы распространяется отдельно по лицензии MIT — см. LICENSE.
