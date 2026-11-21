@@ -1,0 +1,13 @@
+body{margin:8px;background:var(--bg);color:var(--fg);font-family:"Times New Roman",Times,serif;font-size:16px}
+a{color:var(--link)}a:visited{color:var(--vlink)}
+h1{font-size:32px;margin:10px 0}
+h2{font-size:24px}h3{font-size:19px}
+hr{color:var(--hr);background:var(--hr);height:1px;border:0}
+.small{font-size:13px}
+.hdbar td{padding:2px 4px}
+.side{padding-left:10px}
+.shead{background:var(--head)}
+.c1{background:var(--red)}.c2{background:var(--green)}.c3{background:var(--blue)}.c4{background:var(--pink)}.c5{background:var(--mint)}
+.list th{border-bottom:1px solid var(--hr)}
+.box{border:1px solid var(--hr);background:var(--head)}
+input,textarea,select{border:1px solid var(--hr)}
