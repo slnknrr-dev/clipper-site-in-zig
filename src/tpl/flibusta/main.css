@@ -1,0 +1,28 @@
+body{margin:0;background:var(--page);color:var(--fg);font:12px Verdana,sans-serif}
+a{color:var(--link);text-decoration:none}a:hover{text-decoration:underline}
+#header{height:91px;position:relative}
+#logo{float:left;margin:12px 10px 0 12px;width:64px;height:64px;border:1px solid var(--tabBorder)}
+#site-name{margin:14px 0 0;font-size:25px;font-weight:bold}#site-name a{color:#f8feff}
+#site-slogan{color:var(--slogan);font-weight:bold;font-size:12px}
+#primary{position:absolute;right:10px;top:0}
+#primary a{float:left;font-size:10px;color:var(--tab);border:1px solid var(--tabBorder);border-top:0;padding:3px 8px 2px;margin-left:3px}
+#primary a.active{font-weight:bold}
+#mission{background:var(--mission);border:2px solid var(--missionBorder);padding:8px 15px;margin:10px 20px 6px}
+.alpha{padding:0 20px;font-size:11px;line-height:1.6}
+.main{background:var(--bg);padding:10px 20px 20px}
+.side{padding:5px 8px 20px}
+.block{margin-bottom:12px}
+.block h2{background:var(--blockHead);color:var(--blockHeadFg);font-size:13px;font-weight:bold;padding:4px 2px 4px 6px;margin:0 0 6px;border-bottom:2px solid var(--blockBorder);text-align:center}
+.block .content{padding:0 6px}
+.block li{list-style:none;padding-left:12px;background:none}
+.block ul{margin:0;padding:0}
+.main h2{font-size:19px;font-weight:normal;color:var(--title);margin:4px 0 8px}
+.main h3{font-size:14px;color:var(--title);border-bottom:1px solid var(--nodeBorder)}
+.box{background:var(--node);border:1px solid var(--nodeBorder)}
+blockquote{background:var(--quote);border:1px solid var(--nodeBorder);padding:6px}
+.list th{background:var(--blockHead);color:var(--blockHeadFg);border-bottom:2px solid var(--blockBorder)}
+.list tr:nth-child(odd) td{background:var(--odd)}.list tr:nth-child(even) td{background:var(--even)}
+.list td{border-bottom:1px solid var(--nodeBorder)}
+input,textarea,select{border:1px solid var(--blockBorder);font-family:Arial,Helvetica,sans-serif;font-size:11px}
+#footer{height:37px;line-height:37px;text-align:center;font-size:11px;color:var(--fg)}
+.mob #primary{position:static;padding:4px}.mob #primary a{float:none;display:inline-block;margin:2px}.mob #header{height:auto;padding-bottom:4px}
