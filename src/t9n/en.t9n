@@ -1,0 +1,2073 @@
+# Перевод интерфейса. Ключи обновляет `zig build t9n`; переводы после «>» сохраняются.
+
+# src/app.zig
+< Клиппер
+> Clipper
+< [clipper] собран снимок каталога: книг {d}, файлов из books/ {d}\n
+> [clipper] catalog snapshot built: books {d}, files from books/ {d}\n
+< Встроенный администратор сайта. Управляет всем через /panel.
+> The site's built-in administrator. Runs everything through /panel.
+< [clipper] новый снимок {s} не открывается: {s}\n
+> [clipper] new snapshot {s} does not open: {s}\n
+< 503: хранилище занято, повторите запрос
+> 503: storage is busy, please retry
+< 500: страница не поместилась в буферы сервера
+> 500: the page did not fit into the server buffers
+< 500: запись не сохранена (ошибка хранилища)
+> 500: the record was not saved (storage error)
+< [clipper] снимок не пересобран: {s}\n
+> [clipper] snapshot not rebuilt: {s}\n
+< Страница не найдена
+> Page not found
+< <h2>404</h2><p>{h}</p><p><a href="{U}/{E}">На главную</a> · <a href="{U}/help{E}">Схема адресов</a></p>
+> <h2>404</h2><p>{h}</p><p><a href="{U}/{E}">Home</a> · <a href="{U}/help{E}">Address scheme</a></p>
+
+# src/auth.zig
+< Стихи и песни (/p)
+> Poems and songs (/p)
+< Книги (/b, /q)
+> Books (/b, /q)
+< Цитаты (/c)
+> Quotes (/c)
+< Черновики и статьи (/d)
+> Drafts and articles (/d)
+< Форумы (/f/N)
+> Forums (/f/N)
+< Анонимные доски (/f/str)
+> Anonymous boards (/f/str)
+< Публичное выкладывание книг
+> Public book uploads
+< Комментарии к книгам
+> Book comments
+< Скачивание книг (txt, fb2, epub)
+> Book downloads (txt, fb2, epub)
+< Встраивание через iframe (/e/...)
+> Embedding via iframe (/e/...)
+< Бейджи и информеры (/x/...)
+> Badges and informers (/x/...)
+< Регистрация новых участников
+> New member sign-up
+< участвовать на форуме
+> post on the forum
+< выкладывать книги (/b/upload)
+> upload books (/b/upload)
+< комментировать книги
+> comment on books
+< черновики, стихи, статьи
+> drafts, poems, articles
+< цитаты и персонажи
+> quotes and characters
+< сотрудник: управляет сайтом наравне с /u/0 (кроме прав сотрудников)
+> staff: runs the site like /u/0 (except staff rights)
+
+# src/cli.zig
+< clipper hash: нужен один аргумент — пароль
+> clipper hash: exactly one argument is needed — the password
+< clipper convert: нужен один аргумент — файл книги
+> clipper convert: exactly one argument is needed — the book file
+< clipper fedcheck: нужен один аргумент — сайт (example.com или http://localhost:3001)
+> clipper fedcheck: exactly one argument is needed — the site (example.com or http://localhost:3001)
+< clipper build понимает только -r, -img, -btree и -zstd
+> clipper build understands only -r, -img, -btree and -zstd
+< после -s нужен адрес сайта, например clipper.to (до 100 байт, без пробелов и знаков / < > " &)
+> -s needs the site address, e.g. clipper.to (up to 100 bytes, no spaces or / < > " &)
+< после -n нужно название сайта, например "Клиппер" (до 100 байт)
+> -n needs the site name, e.g. "Clipper" (up to 100 bytes)
+< -d: auto (по устройству), true (тёмная), false (светлая) или time (по часам)
+> -d: auto (by device), true (dark), false (light) or time (by clock)
+< после -c нужен главный цвет: #rrggbb или #rgb
+> -c needs the core color: #rrggbb or #rgb
+< после -b нужен фирменный цвет: #rrggbb или #rgb
+> -b needs the brand color: #rrggbb or #rgb
+< после -ico нужен файл значка (.ico)
+> -ico needs an icon file (.ico)
+< после -png нужен файл логотипа (.png)
+> -png needs a logo file (.png)
+< буква раздела повторяется в одном флаге (-M, -R, -G или -N)
+> a section letter repeats within one flag (-M, -R, -G or -N)
+< после -l нужен логин администратора (до 40 байт, без пробелов)
+> -l needs the administrator login (up to 40 bytes, no spaces)
+< после -pwd нужен пароль /u/0 (от 4 до 200 байт)
+> -pwd needs the /u/0 password (4 to 200 bytes)
+< после -phc нужна строка PHC argon2id ($argon2id$...); её печатает clipper hash ПАРОЛЬ
+> -phc needs an argon2id PHC string ($argon2id$...); clipper hash PASSWORD prints it
+< после -w нужно число воркеров от 1 до 64
+> -w needs a worker count from 1 to 64
+< после -p нужен номер порта
+> -p needs a port number
+< после -r нужна папка библиотеки
+> -r needs the library folder
+< после -img нужна папка картинок
+> -img needs a pictures folder
+< после -t нужна тема: flibusta, samlib, proza, nepomn
+> -t needs a theme: flibusta, samlib, proza, nepomn
+< после --tls-cert и --tls-key нужен файл
+> --tls-cert and --tls-key need a file
+< неверный порт: нужно число от 1 до 65535
+> bad port: a number from 1 to 65535 is needed
+< неизвестная тема: бывают flibusta, samlib, proza, nepomn
+> unknown theme: there are flibusta, samlib, proza, nepomn
+< -zstd N: размер кадра от 4 до 32 КБ (страница чтения не больше 32 КБ)
+> -zstd N: frame size from 4 to 32 KB (a reading page is at most 32 KB)
+< неизвестный аргумент (clipper help — справка)
+> unknown argument (clipper help — usage)
+< нужен порт: clipper -p PORT (clipper help — справка)
+> a port is needed: clipper -p PORT (clipper help — usage)
+< -pwd и -phc вместе не задаются: пароль /u/0 — либо открытым текстом, либо строкой PHC
+> -pwd and -phc cannot be given together: the /u/0 password is either plain text or a PHC string
+< --tls-cert и --tls-key задаются только вместе
+> --tls-cert and --tls-key go only together
+< clipper zstd N [-r ROOTDIR] [ПАПКА…]: N — размер кадра от 4 до 32 КБ
+> clipper zstd N [-r ROOTDIR] [DIR...]: N is the frame size from 4 to 32 KB
+< clipper zstd N [-r ROOTDIR] [ПАПКА…]: после N — только -r и папки с книгами
+> clipper zstd N [-r ROOTDIR] [DIR...]: after N only -r and folders with books
+
+# src/export.zig
+< </annotation><lang>ru</lang></title-info>\n<document-info><author><nickname>clipper</nickname></author><program-used>Клиппер</program-used><date>{s}</date><id>clipper-book-{d}</id><version>1.0</version></document-info></description>\n<body><title><p>
+> </annotation><lang>en</lang></title-info>\n<document-info><author><nickname>clipper</nickname></author><program-used>Clipper</program-used><date>{s}</date><id>clipper-book-{d}</id><version>1.0</version></document-info></description>\n<body><title><p>
+< Скачивание отключено.
+> Downloads are disabled.
+< Файл не собран.
+> The file was not built.
+
+# src/fb2.zig
+< ﻿
+>
+< Глава {d}
+> Chapter {d}
+< Текст
+> Text
+
+# src/fed.zig
+< -fed: список не разобран
+> -fed: the list was not parsed
+< -fed: «{s}» — не имя сайта и не файл .csv
+> -fed: "{s}" is neither a site name nor a .csv file
+< -fed: список сайтов пуст
+> -fed: the site list is empty
+< -fed: не хватает памяти
+> -fed: out of memory
+< -fed: файл {s} не создаётся
+> -fed: file {s} cannot be created
+< -fed: файл {s} не читается ({s})
+> -fed: file {s} cannot be read ({s})
+< {s}, строка {d}: полей больше трёх (domain,authInsideService,authOutsideService)
+> {s}, line {d}: more than three fields (domain,authInsideService,authOutsideService)
+< {s}, строка {d}: значение должно быть true, false, 1, 0 или пустым
+> {s}, line {d}: the value must be true, false, 1, 0 or empty
+< {s}, строка {d}: «{s}» — не имя сайта
+> {s}, line {d}: "{s}" is not a site name
+< {s}: сайтов больше {d} или не хватает памяти
+> {s}: more than {d} sites or out of memory
+< [clipper] {s} — список федерации оставлен прежним\n
+> [clipper] {s} — the federation list was kept as before\n
+
+# src/import.zig
+< Не хватило памяти на разбор файла.
+> Not enough memory to parse the file.
+< Файл слишком велик после распаковки.
+> The file is too large after decompression.
+< Файл повреждён и не разбирается.
+> The file is damaged and cannot be parsed.
+< Файл FB2 не разобран.
+> The FB2 file was not parsed.
+< Это не книга EPUB: в архиве нет описания или текста.
+> This is not an EPUB book: the archive has no description or text.
+< Книга EPUB защищена от копирования (DRM): её текст зашифрован.
+> The EPUB book is copy-protected (DRM): its text is encrypted.
+< Файл PDF не разобран: в нём не нашлось страниц.
+> The PDF file was not parsed: no pages were found in it.
+< Файл PDF закрыт паролем или защитой: текст из него не достаётся.
+> The PDF file is locked with a password or protection: its text cannot be extracted.
+< В файле нет текста. Если это скан, то в нём только картинки страниц, а распознавания текста на сайте нет.
+> The file has no text. If it is a scan, it contains only page images, and the site does no text recognition.
+< Текст в файле PDF есть, но его буквы не переводятся в обычные: шрифты вложены без таблицы соответствия.
+> The PDF file has text, but its letters do not map to ordinary ones: the fonts are embedded without a character map.
+< Разбор этого формата в программу не собран.
+> Parsing of this format is not built into the program.
+< —
+>
+
+# src/import/djvu.zig
+< Степь тянулась до самого края неба, и дорога в ней каза-
+>
+< лась бесконечной: ни дерева, ни жилья, только трава да ветер.
+>
+< Ехали молча, каждый думал о своём.
+>
+< К вечеру показались огни, и лошади пошли веселее, чуя
+>
+< близкий отдых; возница запел что-то протяжное и старое,
+>
+< а мальчик уснул на тюках.
+>
+< Степь тянулась до самого края неба, и дорога в ней казалась бесконечной: ни дерева, ни жилья, только трава да ветер. Ехали молча, каждый думал о своём.\n\n
+>
+< К вечеру показались огни, и лошади пошли веселее, чуя близкий отдых; возница запел что-то протяжное и старое, а мальчик уснул на тюках.
+>
+
+# src/import/pdf.zig
+< Начало
+> Beginning
+
+# src/import/pdf_test.zig
+< Из города выехала бричка и с громом покатила по почтовому
+>
+< тракту.
+>
+< В бричке сидели двое обывателей города.
+>
+< Кроме них в бричке находился еще один пассажир.
+>
+< Вторая глава началась на новой странице и тоже довольно
+>
+< длинная. Чтобы текста хватило на проверку текстового слоя.
+>
+
+# src/layout.zig
+< Стихи
+> Poems
+< стихи, верлибры, песни
+> poems, free verse, songs
+< Книги
+> Books
+< книги и серии
+> books and series
+< Цитаты
+> Quotes
+< люди и персонажи
+> people and characters
+< Черновики
+> Drafts
+< черновики и статьи
+> drafts and articles
+< Форумы
+> Forums
+< форумы и имиджборды
+> forums and imageboards
+< Записи
+> Recordings
+< аудиокниги, чтецы и исполнители
+> audiobooks, readers and performers
+< Авторы
+> Authors
+< пользователи и авторы
+> members and authors
+< <a href="{U}/c{E}">Люди</a><br><a href="{U}/c#chars{E}">Персонажи</a>
+> <a href="{U}/c{E}">People</a><br><a href="{U}/c#chars{E}">Characters</a>
+< Поиск книг
+> Book search
+< Поиск
+> Search
+< цифровая библиотека
+> digital library
+< <input name="q" size="16" value="{h}"> <input type="submit" value="Найти"></form>
+> <input name="q" size="16" value="{h}"> <input type="submit" value="Search"></form>
+< <div class="block"><h2>Оформление</h2><div class="content">
+> <div class="block"><h2>Appearance</h2><div class="content">
+< <table width="100%" class="c2" cellpadding="3"><tr><td><b>ОФОРМЛЕНИЕ:</b></td></tr></table><div class="small" style="margin:3px 0 10px">
+> <table width="100%" class="c2" cellpadding="3"><tr><td><b>APPEARANCE:</b></td></tr></table><div class="small" style="margin:3px 0 10px">
+< <h5 class="columntitle">Оформление</h5><span style="font-size:14px">
+> <h5 class="columntitle">Appearance</h5><span style="font-size:14px">
+< <div class="leftx"><b>Оформление:</b><br>
+> <div class="leftx"><b>Appearance:</b><br>
+< ">Настроить оформление&hellip;</a>
+> ">Customize appearance&hellip;</a>
+< Полная версия
+> Full version
+< Мобильная версия
+> Mobile version
+< <a href="{U}/help{E}">Схема адресов</a>
+> <a href="{U}/help{E}">Address scheme</a>
+< <a href="{U}/signin?back={q}{E}">Войти</a> · 
+> <a href="{U}/signin?back={q}{E}">Sign in</a> · 
+< <a href="{U}/signup{E}">Регистрация</a>
+> <a href="{U}/signup{E}">Sign up</a>
+< <br><a href="{U}/fed{E}">Вход с другого сайта</a>
+> <br><a href="{U}/fed{E}">Sign in from another site</a>
+< <a href="{U}/bookmarks{E}">Закладки</a> · 
+> <a href="{U}/bookmarks{E}">Bookmarks</a> · 
+< <a href="{U}/panel{E}">Панель</a> · <a href="{U}/logout{E}">Выйти</a>
+> <a href="{U}/panel{E}">Panel</a> · <a href="{U}/logout{E}">Sign out</a>
+< <br><a href="{U}/b/upload{E}">Выложить книгу</a>
+> <br><a href="{U}/b/upload{E}">Upload a book</a>
+< <br><a href="{U}/fed{E}">Другие сайты (федерация)</a>
+> <br><a href="{U}/fed{E}">Other sites (federation)</a>
+< АБВГДЕЖЗИЙКЛМНОПРСТУФХЦЧШЩЭЮЯ
+> ABCDEFGHIJKLMNOPQRSTUVWXYZ
+< <div class="mtop"><a href="#menu">&#9776; Меню</a> <a href="{U}/{E}">Главная</a> <a href="{U}/s{E}">Поиск</a></div><div class="main">
+> <div class="mtop"><a href="#menu">&#9776; Menu</a> <a href="{U}/{E}">Home</a> <a href="{U}/s{E}">Search</a></div><div class="main">
+< <p class="mtop"><a href="#top">&uarr; Наверх</a></p></div>
+> <p class="mtop"><a href="#top">&uarr; Top</a></p></div>
+< <div class="block"><h2>Навигация по тексту</h2><div class="content"><h4>{s}</h4>{s}</div></div>
+> <div class="block"><h2>Text navigation</h2><div class="content"><h4>{s}</h4>{s}</div></div>
+< <table width="100%" class="c3" cellpadding="3"><tr><td><b>ОГЛАВЛЕНИЕ:</b></td></tr></table><div class="small" style="margin:3px 0 10px"><h4>{s}</h4>{s}</div>
+> <table width="100%" class="c3" cellpadding="3"><tr><td><b>CONTENTS:</b></td></tr></table><div class="small" style="margin:3px 0 10px"><h4>{s}</h4>{s}</div>
+< <h5 class="columntitle">Оглавление</h5>{s}
+> <h5 class="columntitle">Contents</h5>{s}
+< <div class="leftx"><b>Главы:</b><br>{s}</div>
+> <div class="leftx"><b>Chapters:</b><br>{s}</div>
+< Тёмная
+> Dark
+< Светлая
+> Light
+<  &mdash; <b>сейчас</b>
+>  &mdash; <b>now</b>
+< <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">\n<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>Оформление :: 
+> <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">\n<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1251">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n<title>Appearance :: 
+< ">{h}</a> &raquo; настройка оформления</div>\n
+> ">{h}</a> &raquo; appearance settings</div>\n
+< <h1>Оформление</h1>\n<div class="grp">Тема</div>
+> <h1>Appearance</h1>\n<div class="grp">Theme</div>
+< \n<div class="grp">Режим</div>
+> \n<div class="grp">Mode</div>
+< как на устройстве
+> as on the device
+< светлая
+> light
+< тёмная
+> dark
+< по времени суток
+> by time of day
+< \n<div class="grp">Итог</div><div class="res">t=<b>
+> \n<div class="grp">Result</div><div class="res">t=<b>
+< (по умолчанию)
+> (default)
+< ">&laquo; Применить и вернуться</a>\n<a class="btn" href="
+> ">&laquo; Apply and return</a>\n<a class="btn" href="
+< ">Сбросить к умолчанию</a>\n<a class="btn" href="
+> ">Reset to default</a>\n<a class="btn" href="
+< ">Отмена</a>\n<p class="note">Возврат на:<br><code>
+> ">Cancel</a>\n<p class="note">Return to:<br><code>
+
+# src/library.zig
+< clipper build: {s}: не читается или больше 50 МБ, пропущен\n
+> clipper build: {s}: unreadable or larger than 50 MB, skipped\n
+< clipper build: {s}: пропущен. {s}\n
+> clipper build: {s}: skipped. {s}\n
+< clipper build: {s}: номер {d} уже занят, пропущен\n
+> clipper build: {s}: number {d} is already taken, skipped\n
+< Неизвестный автор
+> Unknown author
+
+# src/main.zig
+< не хватает памяти
+> out of memory
+< хеш не посчитан
+> hash not computed
+< сеть недоступна (Winsock 2.2)
+> network unavailable (Winsock 2.2)
+< --worker — служебный флаг: воркеров запускает сам clipper (-w N)
+> --worker is an internal flag: clipper starts workers itself (-w N)
+< порт {d} занят
+> port {d} is busy
+< порт {d} не открывается: {s}
+> port {d} does not open: {s}
+< clipper: {s}://localhost:{d} · библиотека {s} · книг {d} · тема {s} · записи: {s}{s}{s}\n
+> clipper: {s}://localhost:{d} · library {s} · books {d} · theme {s} · records: {s}{s}{s}\n
+< B+ дерево
+> B+ tree
+< журнал
+> journal
+<  · воркеров {d}
+>  · workers {d}
+<  · вход /u/0 закрыт (нет -pwd или -phc)
+>  · /u/0 sign-in closed (no -pwd or -phc)
+< clipper: федерация — {s}, сайтов {d}{s}\n
+> clipper: federation — {s}, sites {d}{s}\n
+< новые сайты записываются в список
+> new sites are added to the list
+< только сайты из списка
+> only sites from the list
+< только сайты из флага -fed
+> only sites from the -fed flag
+<  · новым сайтам вход закрыт, пока не разрешит строка localhost или /panel
+>  · new sites cannot sign in until the localhost line or /panel allows it
+< воркер {d}: сокет главного процесса не унаследован
+> worker {d}: the main process socket was not inherited
+< папка tmp не открывается: {s}
+> the tmp folder does not open: {s}
+< сервер не запущен: {s}
+> server not started: {s}
+< {s} {s}: файл не читается или больше 1 МБ ({s})
+> {s} {s}: file unreadable or larger than 1 MB ({s})
+< {s} {s}: это не {s}
+> {s} {s}: this is not {s}
+< значок ICO
+> an ICO icon
+< хранилище занято другим процессом
+> storage is held by another process
+< снимок каталога или хранилище повреждены ({s})
+> catalog snapshot or storage is damaged ({s})
+< папка библиотеки {s} не открывается: {s}
+> library folder {s} does not open: {s}
+< {s}: испорченный словарь zstd (пересоздать: clipper zstd N)
+> {s}: damaged zstd dictionary (recreate it: clipper zstd N)
+< словарь zstd не загружен: {s}
+> zstd dictionary not loaded: {s}
+< {s}: файла словаря zstd нет
+> {s}: no such zstd dictionary file
+< нет clipper{d}.zstd ни в текущей папке, ни в папке программы (создать: clipper zstd {d})
+> no clipper{d}.zstd in the current folder or the program's folder (create it: clipper zstd {d})
+< нет clipperN.zstd ни в текущей папке, ни в папке программы (создать: clipper zstd 16)
+> no clipperN.zstd in the current folder or the program's folder (create one: clipper zstd 16)
+< в {s} нет снимка каталога: сначала clipper build или clipper -p PORT
+> no catalog snapshot in {s}: run clipper build or clipper -p PORT first
+< папка {s} не открывается: {s}
+> folder {s} does not open: {s}
+< для словаря мало текста: {d} байт (нужно хотя бы 4 КБ)
+> too little text for a dictionary: {d} bytes (at least 4 KB needed)
+< {s} не записан: {s}
+> {s} not written: {s}
+< clipper zstd: {s} — кадр {d} КБ, словарь {d} КБ из {d} КБ текста (книг и файлов {d}), {d} мс\n
+> clipper zstd: {s} — {d} KB frames, {d} KB dictionary from {d} KB of text ({d} books and files), {d} ms\n
+< {s}: не читается ({s})
+> {s}: unreadable ({s})
+< clipper convert: {s} — {s}, глав {d}, абзацев {d}, {d} КБ текста, {d} мс\n
+> clipper convert: {s} — {s}, chapters {d}, paragraphs {d}, {d} KB of text, {d} ms\n
+< fedcheck: «{s}» — не имя сайта
+> fedcheck: "{s}" is not a site name
+< fedcheck: {s}://{s} — {s}
+> fedcheck: {s}://{s} — {s}
+< эта сборка (для Windows XP) не умеет https
+> this build (for Windows XP) cannot do https
+< сертификат https не принят или рукопожатие не удалось
+> https certificate not accepted or handshake failed
+< нет ответа за отведённое время
+> no answer within the allotted time
+< имя не найдено
+> name not found
+< ответ — не HTTP
+> the answer is not HTTP
+< соединение не установлено
+> connection not established
+< clipper fedcheck: {s}://{s} — ответ {d} за {d} мс: {s}\n
+> clipper fedcheck: {s}://{s} — answer {d} in {d} ms: {s}\n
+< участник федерации Клиппер
+> a Clipper federation member
+< не участник федерации (нет Клиппер или он запущен без -fed)
+> not a federation member (no Clipper, or it runs without -fed)
+< хранилище не открывается: {s}
+> storage does not open: {s}
+< папка картинок не открывается: {s}
+> the pictures folder does not open: {s}
+< снимок не собран: {s}
+> snapshot not built: {s}
+< clipper build: library.{d}.snap — книг {d} (файлов {d}, пропущено {d}), текст {d} КБ → {d} КБ, {d} мс\n
+> clipper build: library.{d}.snap — books {d} (files {d}, skipped {d}), text {d} KB → {d} KB, {d} ms\n
+< clipper build: картинок {d} (обработано заново {d}, не разобрано {d})\n
+> clipper build: {d} pictures ({d} processed anew, {d} not readable)\n
+
+# src/net/tls.zig
+< --tls-cert: файл сертификата не читается
+> --tls-cert: the certificate file is unreadable
+< --tls-key: файл ключа не читается
+> --tls-key: the key file is unreadable
+< --tls-cert: сертификат повреждён (ожидается PEM)
+> --tls-cert: the certificate is damaged (PEM expected)
+< --tls-cert: в файле нет сертификата (-----BEGIN CERTIFICATE-----)
+> --tls-cert: the file has no certificate (-----BEGIN CERTIFICATE-----)
+< --tls-cert: цепочка сертификатов слишком длинная
+> --tls-cert: the certificate chain is too long
+< --tls-key: ключ не разобран (нужен PEM: ECDSA P-256 или Ed25519)
+> --tls-key: the key was not parsed (PEM needed: ECDSA P-256 or Ed25519)
+< --tls-key: ключ не подходит к сертификату
+> --tls-key: the key does not match the certificate
+< --tls-key: поддерживается только кривая P-256 (prime256v1)
+> --tls-key: only the P-256 curve is supported (prime256v1)
+< --tls-key: ключи RSA не поддерживаются (нужен ECDSA P-256 или Ed25519)
+> --tls-key: RSA keys are not supported (ECDSA P-256 or Ed25519 needed)
+< --tls-key: ключ зашифрован паролем; нужен незашифрованный
+> --tls-key: the key is password-encrypted; an unencrypted one is needed
+< --tls-key: неизвестный вид ключа (нужен ECDSA P-256 или Ed25519)
+> --tls-key: unknown key type (ECDSA P-256 or Ed25519 needed)
+
+# src/out.zig
+< неизвестный спецификатор
+> unknown specifier
+< лишние аргументы в f: 
+> extra arguments in f: 
+
+# src/pages/account.zig
+< <h2>Вход</h2>
+> <h2>Sign in</h2>
+< <input type="hidden" name="back" value="{h}">\n<table><tr><td>Логин</td><td><input name="login" size="20"></td></tr><tr><td>Пароль</td><td><input type="password" name="pass" size="20"></td></tr>\n<tr><td></td><td><input type="submit" value="Войти"></td></tr></table></form>\n<p>Нет учётной записи? 
+> <input type="hidden" name="back" value="{h}">\n<table><tr><td>Login</td><td><input name="login" size="20"></td></tr><tr><td>Password</td><td><input type="password" name="pass" size="20"></td></tr>\n<tr><td></td><td><input type="submit" value="Sign in"></td></tr></table></form>\n<p>No account? 
+< Регистрация закрыта.
+> Sign-up is closed.
+< \n<p>Есть учётная запись на другом сайте федерации? <a href="{U}/fed{E}">Войти с другого сайта</a></p>
+> \n<p>Have an account on another federation site? <a href="{U}/fed{E}">Sign in from another site</a></p>
+< Вход
+> Sign in
+< <h2>Регистрация</h2>
+> <h2>Sign up</h2>
+< <p>Регистрация отключена администратором.</p>
+> <p>Sign-up has been disabled by the administrator.</p>
+< \n<table><tr><td>Логин</td><td><input name="login" size="20"> <span class="muted">латиница, 3–20</span></td></tr>\n<tr><td>Пароль</td><td><input type="password" name="pass" size="20"></td></tr>\n<tr><td>Ник</td><td><input name="nick" size="20"></td></tr>\n<tr><td>Кто вы</td><td><label><input type="radio" name="kind" value="user" checked> читатель (/u/N, N&gt;0)</label><br><label><input type="radio" name="kind" value="author"> автор — Unveiler / Upbuilder (/u/-N)</label></td></tr>\n<tr><td></td><td><input type="submit" value="Зарегистрироваться"></td></tr></table></form>
+> \n<table><tr><td>Login</td><td><input name="login" size="20"> <span class="muted">Latin letters, 3–20</span></td></tr>\n<tr><td>Password</td><td><input type="password" name="pass" size="20"></td></tr>\n<tr><td>Nickname</td><td><input name="nick" size="20"></td></tr>\n<tr><td>You are</td><td><label><input type="radio" name="kind" value="user" checked> a reader (/u/N, N&gt;0)</label><br><label><input type="radio" name="kind" value="author"> an author — Unveiler / Upbuilder (/u/-N)</label></td></tr>\n<tr><td></td><td><input type="submit" value="Sign up"></td></tr></table></form>
+< Регистрация
+> Sign up
+< Неверный логин или пароль.
+> Wrong login or password.
+< Регистрация отключена.
+> Sign-up is disabled.
+< Логин: 3–20 символов, латиница, цифры, _.
+> Login: 3–20 characters, Latin letters, digits, _.
+< Пароль: минимум 4 символа.
+> Password: at least 4 characters.
+< Пароль слишком длинный.
+> The password is too long.
+< Такой логин уже занят.
+> This login is already taken.
+< Автор.
+> Author.
+< <h2>Сеансы: {h}</h2>
+> <h2>Sessions: {h}</h2>
+< \n<table class="list"><tr><th></th><th>вход</th><th>активность</th><th>адрес</th><th>браузер</th><th></th></tr>
+> \n<table class="list"><tr><th></th><th>signed in</th><th>activity</th><th>address</th><th>browser</th><th></th></tr>
+< <b>эта</b>
+> <b>this one</b>
+< Выйти
+> Sign out
+< Завершить
+> End
+< <input type="hidden" name="hid" value="*"><input type="submit" value="Выйти везде ({d})"></form>\n<p class="muted">Завершение чужого сеанса выкидывает тот браузер со входа. <a href="{U}/panel{E}">Вернуться в панель</a></p>
+> <input type="hidden" name="hid" value="*"><input type="submit" value="Sign out everywhere ({d})"></form>\n<p class="muted">Ending another session signs that browser out. <a href="{U}/panel{E}">Back to the panel</a></p>
+< Выход
+> Sign out
+< Панель
+> Panel
+< Сеансы
+> Sessions
+< Сеанс завершён.
+> Session ended.
+< <h2>Панель: {h}</h2>
+> <h2>Panel: {h}</h2>
+< \n<p class="muted">логин <b>{h}</b> · профиль <a href="{U}/u/{d}{E}">/u/{d}</a> · <a href="{U}/logout{E}">выйти</a></p>\n<h3>Профиль</h3><form action="/panel/profile" method="post" class="box">
+> \n<p class="muted">login <b>{h}</b> · profile <a href="{U}/u/{d}{E}">/u/{d}</a> · <a href="{U}/logout{E}">sign out</a></p>\n<h3>Profile</h3><form action="/panel/profile" method="post" class="box">
+< \nИмя: <b>{h}</b> <span class="muted">приходит с вашего сайта</span><br>О себе:<br><textarea name="about" rows="3" cols="50">{h}</textarea><br>\n<span class="muted">Пароля здесь нет: вход держится на токене федерации (45 минут бездействия или до закрытия браузера).</span><br><input type="submit" value="Сохранить"></form>\n<h3>Мои права</h3><table class="list">
+> \nName: <b>{h}</b> <span class="muted">comes from your site</span><br>About:<br><textarea name="about" rows="3" cols="50">{h}</textarea><br>\n<span class="muted">There is no password here: the sign-in rests on a federation token (45 minutes of inactivity or until the browser closes).</span><br><input type="submit" value="Save"></form>\n<h3>My rights</h3><table class="list">
+< \nНик: <input name="nick" value="{h}" size="20"><br>О себе:<br><textarea name="about" rows="3" cols="50">{h}</textarea><br>\nНовый пароль: <input type="password" name="pass" size="16"> <span class="muted">пусто — не менять</span><br><input type="submit" value="Сохранить"></form>\n<h3>Мои права</h3><table class="list">
+> \nNickname: <input name="nick" value="{h}" size="20"><br>About:<br><textarea name="about" rows="3" cols="50">{h}</textarea><br>\nNew password: <input type="password" name="pass" size="16"> <span class="muted">empty — keep</span><br><input type="submit" value="Save"></form>\n<h3>My rights</h3><table class="list">
+< \n<h3>Мои книги</h3>
+> \n<h3>My books</h3>
+< <table class="list"><tr><th>Книга</th><th>iframe</th><th>Код</th></tr>
+> <table class="list"><tr><th>Book</th><th>iframe</th><th>Code</th></tr>
+< </table><input type="submit" value="Сохранить встраивание"></form>
+> </table><input type="submit" value="Save embedding"></form>
+< <p class="muted">Нет. <a href="{U}/b/upload{E}">Выложить книгу</a></p>
+> <p class="muted">None. <a href="{U}/b/upload{E}">Upload a book</a></p>
+< \n<h3>Мои бейджи и информеры</h3>\n<p><img src="/x/u/books.svg?id={d}" alt=""> <img src="/x/u/posts.png?id={d}" alt=""> <img src="/x/u/comments.svg?id={d}&amp;color=blue" alt=""></p>\n<textarea rows="3" cols="70" readonly style="width:100%">&lt;img src=&quot;
+> \n<h3>My badges and informers</h3>\n<p><img src="/x/u/books.svg?id={d}" alt=""> <img src="/x/u/posts.png?id={d}" alt=""> <img src="/x/u/comments.svg?id={d}&amp;color=blue" alt=""></p>\n<textarea rows="3" cols="70" readonly style="width:100%">&lt;img src=&quot;
+< <hr><h2>Администрирование сайта</h2>\n
+> <hr><h2>Site administration</h2>\n
+< \n<h3>Сервер</h3><table class="list">\n<tr><td>Порт</td><td><b>{d}</b> <span class="muted">(флаг <code>-p</code>; {s})</span></td></tr>\n<tr><td>Папка библиотеки</td><td><code>{h}</code> <span class="muted">(флаг <code>-r</code>)</span></td></tr>\n<tr><td>Тема по умолчанию</td><td><b>{s}</b> <span class="muted">(флаг <code>-t</code> или «Оформление» ниже)</span></td></tr>\n<tr><td>Хранилище записей</td><td><b>{s}</b></td></tr>\n<tr><td>Снимок каталога</td><td><code>{h}</code> · книг: {d} · кадров текста: {d}</td></tr>\n<tr><td>Кэш</td><td>кадров: {d} попаданий / {d} промахов · страниц гостей: {d} / {d}</td></tr></table>
+> \n<h3>Server</h3><table class="list">\n<tr><td>Port</td><td><b>{d}</b> <span class="muted">(flag <code>-p</code>; {s})</span></td></tr>\n<tr><td>Library folder</td><td><code>{h}</code> <span class="muted">(flag <code>-r</code>)</span></td></tr>\n<tr><td>Default theme</td><td><b>{s}</b> <span class="muted">(flag <code>-t</code> or "Appearance" below)</span></td></tr>\n<tr><td>Record storage</td><td><b>{s}</b></td></tr>\n<tr><td>Catalog snapshot</td><td><code>{h}</code> · books: {d} · text frames: {d}</td></tr>\n<tr><td>Cache</td><td>frames: {d} hits / {d} misses · guest pages: {d} / {d}</td></tr></table>
+< B+ дерево (clipper.tree)
+> B+ tree (clipper.tree)
+< журнал (clipper.journal)
+> journal (clipper.journal)
+< \n<h3>Функции сайта</h3><form action="/panel/features" method="post" class="box">
+> \n<h3>Site features</h3><form action="/panel/features" method="post" class="box">
+< </table>\n<input type="submit" value="Сохранить"> <span class="muted">хранится в БД; выключенные разделы скрыты и закрыты для всех, кроме сотрудников и /u/0</span></form>\n<h3>Файлы</h3><form action="/panel/files" method="post" class="box">
+> </table>\n<input type="submit" value="Save"> <span class="muted">stored in the database; disabled sections are hidden and closed to everyone except staff and /u/0</span></form>\n<h3>Files</h3><form action="/panel/files" method="post" class="box">
+< Где искать файлы: <input name="dir" size="30" value="{h}"> <input type="submit" value="Сохранить">\n<div class="muted">Папка внутри папки библиотеки. Отдаются по адресу <code>/files/...</code>.</div></form>\n
+> Where to look for files: <input name="dir" size="30" value="{h}"> <input type="submit" value="Save">\n<div class="muted">A folder inside the library folder. Served at <code>/files/...</code>.</div></form>\n
+< <p class="muted">Вход /u/0 задан флагами запуска (<code>-l</code>, <code>-pwd</code> или <code>-phc</code>) и действует только с этой машины. Он нужен, чтобы настроить сайт: заведите участника и дайте ему права.</p>
+> <p class="muted">The /u/0 sign-in is set by startup flags (<code>-l</code>, <code>-pwd</code> or <code>-phc</code>) and works only from this machine. It is for setting up the site: create a member and give them rights.</p>
+< \n<h3>Права участников</h3><form action="/panel/rights" method="post">
+> \n<h3>Members' rights</h3><form action="/panel/rights" method="post">
+< <table class="list"><tr><th>Участник</th>
+> <table class="list"><tr><th>Member</th>
+< <th>блок</th></tr>
+> <th>block</th></tr>
+< <tr><td><a href="{U}/u/{d}{E}">{h}</a><br><span class="muted">{h} · {d}</span><input type="hidden" name="acc" value="{h}"></td>
+> <tr><td><a href="{U}/u/{d}{E}">{h}</a><br><span class="muted">{h} · {d}</span><input type="hidden" name="acc" value="{h}"></td>
+< </table>\n<input type="submit" value="Сохранить права"></form>\n<p class="muted">forum — форум; upload — /b/upload; comment — комментарии к книгам; write — черновики, стихи, статьи; quote — цитаты; staff — сотрудник (его форматы загрузки заданы выше). Логин с «@» — гость федерации. Сайтом управляют сотрудники и /u/0; право staff выдаёт и снимает только /u/0, сотрудник не меняет права себе и другим сотрудникам.</p>\n<h3>Встраивание и информеры</h3>\n<table class="list"><tr><th>iframe</th><th>что</th></tr>\n<tr><td><code>/e/b/{book}[?ch=N]</code></td><td>карточка книги / глава</td></tr><tr><td><code>/e/p/{piece}</code></td><td>стихотворение / песня</td></tr>\n<tr><td><code>/e/c/{person}?op=&amp;ed=&amp;sz=</code></td><td>цитата</td></tr><tr><td><code>/e/d/{draft}</code></td><td>черновик / статья</td></tr>\n<tr><td><code>/e/u/{user}</code></td><td>карточка участника</td></tr><tr><td><code>/e/f/{forum}</code></td><td>последние темы форума</td></tr>\n<tr><td><code>/e/stat</code></td><td>статистика сайта</td></tr><tr><td><code>/e/banner</code></td><td>плашка 88×31 / 468×60 (?size=468)</td></tr></table>\n<table class="list"><tr><th>бейдж</th><th>методы</th><th>параметр</th></tr>
+> </table>\n<input type="submit" value="Save rights"></form>\n<p class="muted">forum — the forum; upload — /b/upload; comment — book comments; write — drafts, poems, articles; quote — quotes; staff — staff (their upload formats are set above). A login with "@" is a federation guest. Staff and /u/0 run the site; only /u/0 grants and removes the staff right, and staff cannot change their own rights or other staff's.</p>\n<h3>Embedding and informers</h3>\n<table class="list"><tr><th>iframe</th><th>what</th></tr>\n<tr><td><code>/e/b/{book}[?ch=N]</code></td><td>book card / chapter</td></tr><tr><td><code>/e/p/{piece}</code></td><td>poem / song</td></tr>\n<tr><td><code>/e/c/{person}?op=&amp;ed=&amp;sz=</code></td><td>quote</td></tr><tr><td><code>/e/d/{draft}</code></td><td>draft / article</td></tr>\n<tr><td><code>/e/u/{user}</code></td><td>member card</td></tr><tr><td><code>/e/f/{forum}</code></td><td>latest forum topics</td></tr>\n<tr><td><code>/e/stat</code></td><td>site statistics</td></tr><tr><td><code>/e/banner</code></td><td>88×31 / 468×60 banner (?size=468)</td></tr></table>\n<table class="list"><tr><th>badge</th><th>methods</th><th>parameter</th></tr>
+< </table>\n<p class="muted">Формат: <code>/x/{вид}/{метод}[.svg|.png]?id=&amp;label=&amp;color=</code>, без расширения — JSON.</p>
+> </table>\n<p class="muted">Format: <code>/x/{kind}/{method}[.svg|.png]?id=&amp;label=&amp;color=</code>, without an extension — JSON.</p>
+< <h3>Оформление</h3><form action="/panel/look" method="post" class="box">
+> <h3>Appearance</h3><form action="/panel/look" method="post" class="box">
+< Тема по умолчанию: <select name="base"><option value=""{s}>как во флаге -t ({s})</option>
+> Default theme: <select name="base"><option value=""{s}>as in the -t flag ({s})</option>
+< </select> режим: <select name="mode">
+> </select> mode: <select name="mode">
+< <option value="{s}"{s}>{s} — {s}</option>
+> <option value="{s}"{s}>{s} — {s}</option>
+<  посетители видят настройку оформления (блок «Оформление», страница <code>/theme</code>, параметр <code>t</code>)</label>\n<table class="list"><tr><th>Темы на выбор</th><th>Режимы на выбор</th></tr><tr><td valign="top">
+>  visitors see the appearance setting (the "Appearance" block, the <code>/theme</code> page, the <code>t</code> parameter)</label>\n<table class="list"><tr><th>Themes to choose</th><th>Modes to choose</th></tr><tr><td valign="top">
+<  {s} — {s}</label><br>
+>  {s} — {s}</label><br>
+< </td></tr></table>\n<input type="submit" value="Сохранить"> <span class="muted">тема и режим по умолчанию доступны всегда; без галочки «видят» у всех посетителей оформление одно</span></form>\n
+> </td></tr></table>\n<input type="submit" value="Save"> <span class="muted">the default theme and mode are always available; without the "see" box all visitors get one appearance</span></form>\n
+< Оформление сохранено.
+> Appearance saved.
+< txt и текст из формы
+> txt and text from the form
+< pdf (экспериментально, только с текстовым слоем)
+> pdf (experimental, with a text layer only)
+< djvu (экспериментально, только с текстовым слоем)
+> djvu (experimental, with a text layer only)
+< <h3>Форматы загрузки книг</h3><form action="/panel/formats" method="post" class="box">
+> <h3>Book upload formats</h3><form action="/panel/formats" method="post" class="box">
+< <table class="list"><tr><th>Формат</th><th>сотрудники</th><th>прочие участники</th></tr>
+> <table class="list"><tr><th>Format</th><th>staff</th><th>other members</th></tr>
+< <br><span class="muted">выключено: сайт запущен без -{s}</span>
+> <br><span class="muted">off: the site was started without -{s}</span>
+< </table>\n<input type="submit" value="Сохранить"> <span class="muted">сотрудник — участник с правом <code>staff</code> (таблица прав ниже); выкладывать книги вообще разрешает право <code>upload</code>; /u/0 выкладывает любые</span></form>\n
+> </table>\n<input type="submit" value="Save"> <span class="muted">staff is a member with the <code>staff</code> right (rights table below); uploading books at all is allowed by the <code>upload</code> right; /u/0 uploads anything</span></form>\n
+< Форматы загрузки сохранены.
+> Upload formats saved.
+< <select name="{h}"><option value=""{s}>по умолчанию</option><option value="1"{s}>да</option><option value="0"{s}>нет</option></select>
+> <select name="{h}"><option value=""{s}>default</option><option value="1"{s}>yes</option><option value="0"{s}>no</option></select>
+< <h3>Федерация</h3>
+> <h3>Federation</h3>
+< <p class="muted">Выключена. Включается флагом <code>-fed</code> при запуске.</p>\n
+> <p class="muted">Off. Turned on with the <code>-fed</code> startup flag.</p>\n
+< <p class="muted">{s} Список: {s}{h}{s}. Сайтов: {d}. <a href="{U}/fed{E}">Страница федерации</a></p>
+> <p class="muted">{s} List: {s}{h}{s}. Sites: {d}. <a href="{U}/fed{E}">Federation page</a></p>
+< Новые сайты записываются сами.
+> New sites are added automatically.
+< Только названные сайты (<code>-fed -</code>).
+> Only named sites (<code>-fed -</code>).
+< Только сайты из флага <code>-fed</code>.
+> Only sites from the <code>-fed</code> flag.
+< задан в командной строке, здесь не правится
+> set on the command line, not edited here
+< <table class="list"><tr><th>Сайт</th><th title="authInsideService">его участники входят сюда</th><th title="authOutsideService">наши входят туда</th></tr>
+> <table class="list"><tr><th>Site</th><th title="authInsideService">its members sign in here</th><th title="authOutsideService">ours sign in there</th></tr>
+< <tr><td><i>по умолчанию</i> <span class="muted">(строка localhost)</span></td><td align="center">
+> <tr><td><i>default</i> <span class="muted">(the localhost line)</span></td><td align="center">
+< да
+> yes
+< нет
+> no
+< <p class="muted">Показаны первые {d}; остальные правятся в файле.</p>
+> <p class="muted">The first {d} are shown; the rest are edited in the file.</p>
+< \nДобавить сайт: <input name="new" size="30"> 
+> \nAdd a site: <input name="new" size="30"> 
+< <input type="submit" value="Сохранить федерацию"> <span class="muted">файл переписывается целиком; его можно править и руками — сервер перечитает сам</span></form>\n
+> <input type="submit" value="Save federation"> <span class="muted">the file is rewritten as a whole; it can also be edited by hand — the server rereads it by itself</span></form>\n
+< Список федерации здесь не правится.
+> The federation list is not edited here.
+< Новый сайт: это не имя сайта.
+> New site: this is not a site name.
+< localhost — это строка умолчаний, она уже в таблице.
+> localhost is the defaults line; it is already in the table.
+< Новый сайт не записан.
+> The new site was not saved.
+< Файл списка федерации не записан.
+> The federation list file was not written.
+< Федерация сохранена.
+> Federation saved.
+< Пароль слишком короткий.
+> The password is too short.
+< Пароль /u/0 задаётся флагом запуска -pwd или -phc.
+> The /u/0 password is set by the -pwd or -phc startup flag.
+< Профиль сохранён.
+> Profile saved.
+< Настройки встраивания сохранены.
+> Embedding settings saved.
+< Сайтом управляют сотрудники и /u/0.
+> Staff and /u/0 run the site.
+< Функции сайта сохранены.
+> Site features saved.
+< Права сохранены.
+> Rights saved.
+< Папка файлов должна лежать внутри папки библиотеки.
+> The files folder must be inside the library folder.
+< Папка файлов сохранена.
+> Files folder saved.
+< 1 ч
+> 1 h
+< 6 ч
+> 6 h
+< 24 ч
+> 24 h
+< 7 дней
+> 7 days
+< \n<h3>Форумы и доски</h3>
+> \n<h3>Forums and boards</h3>
+< <p class="muted">Форумов пока нет.</p>
+> <p class="muted">No forums yet.</p>
+< <table class="list"><tr><th>Форум</th><th>Описание</th></tr>
+> <table class="list"><tr><th>Forum</th><th>Description</th></tr>
+< <input type="hidden" name="kind" value="forum">Новый форум: название <input name="title" size="24"> описание <input name="about" size="36"> <input type="submit" value="Завести форум"></form>\n
+> <input type="hidden" name="kind" value="forum">New forum: title <input name="title" size="24"> description <input name="about" size="36"> <input type="submit" value="Create forum"></form>\n
+< <p class="muted">Досок пока нет.</p>
+> <p class="muted">No boards yet.</p>
+< <table class="list"><tr><th>Доска</th><th>Срок жизни нити</th></tr>
+> <table class="list"><tr><th>Board</th><th>Thread lifetime</th></tr>
+< <tr><td><a href="{U}/f/{s}{E}">/{s}/</a> {h}</td><td>{d} мин</td></tr>
+> <tr><td><a href="{U}/f/{s}{E}">/{s}/</a> {h}</td><td>{d} min</td></tr>
+< <input type="hidden" name="kind" value="board">Новая доска: адрес /f/<input name="id" size="8" maxlength="8"> название <input name="title" size="24"> нить живёт <select name="ttl">
+> <input type="hidden" name="kind" value="board">New board: address /f/<input name="id" size="8" maxlength="8"> title <input name="title" size="24"> a thread lives <select name="ttl">
+< </select> <input type="submit" value="Завести доску">\n<div class="muted">Адрес доски — от 1 до 8 латинских букв и цифр, не одни цифры: /f/1 — это форум.</div></form>\n
+> </select> <input type="submit" value="Create board">\n<div class="muted">A board address is 1 to 8 Latin letters and digits, not digits only: /f/1 is a forum.</div></form>\n
+< Укажите название.
+> Give a title.
+< Форум заведён.
+> Forum created.
+< Не хватает памяти.
+> Out of memory.
+< Адрес доски — от 1 до 8 латинских букв и цифр.
+> A board address is 1 to 8 Latin letters and digits.
+< Такая доска уже есть.
+> This board already exists.
+< Неизвестный срок жизни нити.
+> Unknown thread lifetime.
+< Доска заведена.
+> Board created.
+
+# src/pages/books.zig
+< <p><a href="{U}/b/upload{E}"><b>+ Выложить книгу</b></a></p>
+> <p><a href="{U}/b/upload{E}"><b>+ Upload a book</b></a></p>
+< <h2>Серии</h2>
+> <h2>Series</h2>
+< №
+> No.
+< Серия
+> Series
+< Автор
+> Author
+< Книг
+> Books
+< \n<h2>Книги</h2>
+> \n<h2>Books</h2>
+< Название
+> Title
+< Год
+> Year
+< </td><td>{h}</td><td><a href="{U}/q/{d}{E}">читать</a></td></tr>
+> </td><td>{h}</td><td><a href="{U}/q/{d}{E}">read</a></td></tr>
+< <h2>Серия: {h}</h2><div class="muted">
+> <h2>Series: {h}</h2><div class="muted">
+<  · <code>/b/{d}</code></div><p>{h}</p>\n
+>  · <code>/b/{d}</code></div><p>{h}</p>\n
+< Книга
+> Book
+< <td>{d}</td><td><a href="{U}/b/{d}{E}">{h}</a></td><td>{h}</td><td><a href="{U}/q/{d}{E}">читать</a></td></tr>
+> <td>{d}</td><td><a href="{U}/b/{d}{E}">{h}</a></td><td>{h}</td><td><a href="{U}/q/{d}{E}">read</a></td></tr>
+< Серия: 
+> Series: 
+<  · {h}
+>  · {h}
+<  · серия <a href="{U}/b/{d}{E}">{h}</a>
+>  · series <a href="{U}/b/{d}{E}">{h}</a>
+<  · <code>/b/{d}</code> · прочтений: {d} · скачиваний: {d}</div>\n
+>  · <code>/b/{d}</code> · reads: {d} · downloads: {d}</div>\n
+< <div class="box"><b>Аннотация:</b> {h}</div>\n
+> <div class="box"><b>Annotation:</b> {h}</div>\n
+< <p class="muted">Собрана из черновиков: 
+> <p class="muted">Assembled from drafts: 
+< \n<p class="muted">Выложил: 
+> \n<p class="muted">Uploaded by: 
+< \n<p><a href="{U}/b/{d}/1{E}"><b>&gt;&gt; Читать</b></a> · скачать: 
+> \n<p><a href="{U}/b/{d}/1{E}"><b>&gt;&gt; Read</b></a> · download: 
+< <a href="{U}/b/{d}/txt{E}">txt</a> · <a href="{U}/b/{d}/fb2{E}">fb2</a> · <a href="{U}/b/{d}/epub{E}">epub</a>
+> <a href="{U}/b/{d}/txt{E}">txt</a> · <a href="{U}/b/{d}/fb2{E}">fb2</a> · <a href="{U}/b/{d}/epub{E}">epub</a>
+< <span class="muted">скачивание отключено</span>
+> <span class="muted">downloads disabled</span>
+< </p>\n<h3>Оглавление</h3><ol>
+> </p>\n<h3>Contents</h3><ol>
+< Источник: <input name="source" size="40" value="{h}"> <input type="submit" value="Сохранить"> <span class="muted">адрес или название: mrakopedia, arxiv, habr…</span></form>\n
+> Source: <input name="source" size="40" value="{h}"> <input type="submit" value="Save"> <span class="muted">address or name: mrakopedia, arxiv, habr…</span></form>\n
+< \n<h3>Встроить на свой сайт</h3><textarea rows="2" cols="70" readonly style="width:100%">&lt;iframe src=&quot;
+> \n<h3>Embed on your site</h3><textarea rows="2" cols="70" readonly style="width:100%">&lt;iframe src=&quot;
+< /e/b/{d}&quot; width=&quot;300&quot; height=&quot;160&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</textarea>\n<p class="muted">Глава: <code>/e/b/{d}?ch=1</code> · бейджи: <img src="/x/b/reads.svg?id={d}" alt="reads" align="absmiddle"> <img src="/x/b/comments.png?id={d}" alt="comments" align="absmiddle"> (<code>/x/b/reads.svg?id={d}</code>, без расширения — JSON)</p>
+> /e/b/{d}&quot; width=&quot;300&quot; height=&quot;160&quot; frameborder=&quot;0&quot;&gt;&lt;/iframe&gt;</textarea>\n<p class="muted">Chapter: <code>/e/b/{d}?ch=1</code> · badges: <img src="/x/b/reads.svg?id={d}" alt="reads" align="absmiddle"> <img src="/x/b/comments.png?id={d}" alt="comments" align="absmiddle"> (<code>/x/b/reads.svg?id={d}</code>, without an extension — JSON)</p>
+<  <span class="muted">{h} · <a href="{U}/b/{d}/
+>  <span class="muted">{h} · <a href="{U}/b/{d}/
+< <p class="muted">Комментарии отключены.</p>
+> <p class="muted">Comments are disabled.</p>
+< <input type="hidden" name="parent" value="{d}">Ответ на -{d}<br>
+> <input type="hidden" name="parent" value="{d}">Reply to -{d}<br>
+< Ответить
+> Reply
+< Комментировать
+> Comment
+< <h3>Комментарии ({d})</h3>
+> <h3>Comments ({d})</h3>
+< <a class="muted" href="{U}/b/{d}/-{d}{E}">ответить</a></div>
+> <a class="muted" href="{U}/b/{d}/-{d}{E}">reply</a></div>
+< <h2>Комментарий 
+> <h2>Comment 
+< </h2>\n<p class="muted">к книге <a href="{U}/b/{d}{E}">{h}</a> · постоянная ссылка <code>/b/{d}/
+> </h2>\n<p class="muted">on the book <a href="{U}/b/{d}{E}">{h}</a> · permanent link <code>/b/{d}/
+< <p class="muted">в ответ на:</p>
+> <p class="muted">in reply to:</p>
+< \n<p class="muted">Глубина ответов — не больше 2: ответ уйдёт в ветку -{d}.</p>
+> \n<p class="muted">Reply depth is at most 2: the reply will go into thread -{d}.</p>
+< Комментарий к 
+> Comment on 
+< Комментарий
+> Comment
+< Нет права комментировать или комментарии отключены.
+> No right to comment, or comments are disabled.
+< Текст книги не читается.
+> The book text cannot be read.
+< <a href="{U}/b/{d}/{d}{E}">&laquo; назад</a>
+> <a href="{U}/b/{d}/{d}{E}">&laquo; back</a>
+< <a href="{U}/b/{d}/{d}{E}">вперёд &raquo;</a>
+> <a href="{U}/b/{d}/{d}{E}">next &raquo;</a>
+< Чтение: 
+> Reading: 
+< Оглавление
+> Contents
+< Формат 
+> Format 
+<  вам выкладывать не разрешено: так настроено администратором.
+>  is not allowed for you to upload: the administrator set it so.
+< <h2>Выложить книгу</h2>
+> <h2>Upload a book</h2>
+< <p>Публичное выкладывание книг отключено администратором.</p>
+> <p>Public book uploads have been disabled by the administrator.</p>
+< <p class="box">Администратор не разрешил вам ни одного формата загрузки.</p>
+> <p class="box">The administrator has not allowed you any upload format.</p>
+< \n<table><tr><td>Название</td><td><input name="title" size="40"></td></tr>\n<tr><td>Аннотация</td><td><textarea name="annotation" rows="2" cols="50"></textarea></td></tr>\n
+> \n<table><tr><td>Title</td><td><input name="title" size="40"></td></tr>\n<tr><td>Annotation</td><td><textarea name="annotation" rows="2" cols="50"></textarea></td></tr>\n
+< <tr><td valign="top">Текст</td><td><textarea name="text" rows="10" cols="50"></textarea><br><span class="muted">Главы начинайте строкой «## Название главы». Без заголовков — одна глава.</span></td></tr>\n<tr><td>или файл
+> <tr><td valign="top">Text</td><td><textarea name="text" rows="10" cols="50"></textarea><br><span class="muted">Start chapters with a line "## Chapter title". Without headings — one chapter.</span></td></tr>\n<tr><td>or a file
+< <tr><td>Файл
+> <tr><td>File
+< "><br><span class="muted">Название и главы берутся из файла; название можно задать своё.
+> "><br><span class="muted">The title and chapters are taken from the file; you can set your own title.
+<  PDF и DjVu — только с текстом внутри: сканы не распознаются.
+>  PDF and DjVu — only with text inside: scans are not recognized.
+<  PDF — только с текстом внутри: сканы не распознаются.
+>  PDF — only with text inside: scans are not recognized.
+<  DjVu — только с текстом внутри: сканы не распознаются.
+>  DjVu — only with text inside: scans are not recognized.
+< </span></td></tr>\n<tr><td></td><td><label><input type="checkbox" name="embed" value="1" checked> разрешить встраивание (iframe)</label></td></tr>\n<tr><td></td><td><input type="submit" value="Опубликовать"></td></tr></table></form>
+> </span></td></tr>\n<tr><td></td><td><label><input type="checkbox" name="embed" value="1" checked> allow embedding (iframe)</label></td></tr>\n<tr><td></td><td><input type="submit" value="Publish"></td></tr></table></form>
+< Выложить книгу
+> Upload a book
+< Выложить
+> Upload
+< Нет права выкладывать книги или функция отключена.
+> No right to upload books, or the feature is disabled.
+< В файле нет текста.
+> The file has no text.
+< Папка книг недоступна.
+> The books folder is unavailable.
+< Файл не сохранён.
+> The file was not saved.
+< Нужны название и текст.
+> A title and text are needed.
+< Слишком много глав.
+> Too many chapters.
+< Книга не сохранена.
+> The book was not saved.
+< Без названия
+> Untitled
+< Источник правят выложивший книгу, её автор, сотрудник и /u/0.
+> The source may be edited by whoever uploaded the book, its author, staff and /u/0.
+
+# src/pages/drafts.zig
+< Дата
+> Date
+< Метки
+> Tags
+<  <span class="muted">→ {h} (только чтение)</span>
+>  <span class="muted">→ {h} (read-only)</span>
+<  <span class="muted">(только чтение)</span>
+>  <span class="muted">(read-only)</span>
+< \n<h2>Черновики и фрагменты</h2>\n
+> \n<h2>Drafts and fragments</h2>\n
+< \n<div class="box">Отмеченные: название книги <input name="title" size="24" value="Сборник"> <input type="submit" value="Объединить и опубликовать как книгу"></div>\n</form>
+> \n<div class="box">Selected: book title <input name="title" size="24" value="Collection"> <input type="submit" value="Merge and publish as a book"></div>\n</form>
+< \n<h2>Статьи</h2>
+> \n<h2>Articles</h2>
+< \n<h2>Новый черновик</h2>\n
+> \n<h2>New draft</h2>\n
+< \nТип: <label><input type="radio" name="kind" value="draft" checked> черновик/фрагмент</label> <label><input type="radio" name="kind" value="article"> статья</label><br>\nНазвание: <input name="title" size="30"><br>\n<textarea name="text" rows="6" cols="60" style="width:100%"></textarea><br>\nМетки (через запятую): <input name="tags" size="30"> <input type="submit" value="Сохранить">\n</form>
+> \nType: <label><input type="radio" name="kind" value="draft" checked> draft/fragment</label> <label><input type="radio" name="kind" value="article"> article</label><br>\nTitle: <input name="title" size="30"><br>\n<textarea name="text" rows="6" cols="60" style="width:100%"></textarea><br>\nTags (comma-separated): <input name="tags" size="30"> <input type="submit" value="Save">\n</form>
+< <span class="muted">(статья)</span>
+> <span class="muted">(article)</span>
+<  · {h} · 
+>  · {h} · 
+<  · <code>/d/{d}</code></div>\n
+>  · <code>/d/{d}</code></div>\n
+< <div class="box">Перенесено в <a href="{U}{h}{E}">{h}</a>. Черновик доступен только для чтения.</div>
+> <div class="box">Moved to <a href="{U}{h}{E}">{h}</a>. The draft is read-only.</div>
+< <div class="box">Черновик доступен только для чтения.</div>
+> <div class="box">The draft is read-only.</div>
+< Перенести в стихи как жанр <select name="genre"><option>стихи</option><option>верлибр</option><option>авторская песня</option></select> <input type="submit" value="Перенести в /p"></form>\n<p class="muted">Объединить с другими черновиками в книгу — на <a href="{U}/d{E}">списке черновиков</a>.</p>
+> Move to poems with genre <select name="genre"><option>poems</option><option>free verse</option><option>singer-songwriter song</option></select> <input type="submit" value="Move to /p"></form>\n<p class="muted">Merge with other drafts into a book — on the <a href="{U}/d{E}">drafts list</a>.</p>
+< <label><input type="checkbox" name="sure" value="1"> да, удалить насовсем</label> <input type="submit" value="Удалить">
+> <label><input type="checkbox" name="sure" value="1"> yes, delete for good</label> <input type="submit" value="Delete">
+<  <span class="muted">Опубликованное останется — пропадёт только отметка, что оно из черновика.</span>
+>  <span class="muted">What was published stays — only the note that it came from a draft goes.</span>
+< Статьи
+> Articles
+< Нужно право «черновики, стихи, статьи».
+> The "drafts, poems, articles" right is needed.
+< …
+>
+< Отметьте хотя бы один свободный черновик.
+> Select at least one free draft.
+< Сборник
+> Collection
+< Собрано из черновиков.
+> Assembled from drafts.
+< Удалить черновик может его автор, сотрудник или /u/0.
+> A draft can be deleted by its author, a staff member or /u/0.
+< Отметьте «да, удалить насовсем».
+> Tick "yes, delete for good".
+< Раздел, куда переносят, недоступен.
+> The target section is unavailable.
+< Раздел стихов отключён.
+> The poems section is disabled.
+< стихи
+> poems
+
+# src/pages/embed.zig
+< "><b>{h}</b></a> · цифровая библиотека</div>
+> "><b>{h}</b></a> · digital library</div>
+< Встраивание отключено.
+> Embedding is disabled.
+< Автор запретил встраивание. <a href="/b/{d}">Открыть книгу</a>
+> The author forbade embedding. <a href="/b/{d}">Open the book</a>
+< <h1>{h} — {h}</h1><div class="t">
+> <h1>{h} — {h}</h1><div class="t">
+< глава {d} из {d}
+> chapter {d} of {d}
+<  · глав: {d} · прочтений: {d}</div>\n<div>{h}</div><div><a href="/e/b/{d}?ch=1" target="_self">Читать здесь</a> · <a href="/b/{d}/1">на сайте</a></div></td></tr></table>
+>  · chapters: {d} · reads: {d}</div>\n<div>{h}</div><div><a href="/e/b/{d}?ch=1" target="_self">Read here</a> · <a href="/b/{d}/1">on the site</a></div></td></tr></table>
+< <h1>{h}</h1><div class="m">{h} · {h}</div><div class="t">
+> <h1>{h}</h1><div class="m">{h} · {h}</div><div class="t">
+< <div class="t">&laquo;{h}&raquo;</div><div class="m" align="right">— <a href="/c/{d}">{h}</a></div>
+> <div class="t">&laquo;{h}&raquo;</div><div class="m" align="right">— <a href="/c/{d}">{h}</a></div>
+< <h1>{h}</h1><div class="m">{h} · {h} · {s}</div><div class="t">
+> <h1>{h}</h1><div class="m">{h} · {h} · {s}</div><div class="t">
+< статья
+> article
+< черновик
+> draft
+< <h1><a href="/u/{d}">{h}</a></h1><div class="m">{s} с {h}</div>\n<img src="/x/u/books.png?id={d}" alt=""> <img src="/x/u/posts.png?id={d}&amp;color=blue" alt="">
+> <h1><a href="/u/{d}">{h}</a></h1><div class="m">{s} since {h}</div>\n<img src="/x/u/books.png?id={d}" alt=""> <img src="/x/u/posts.png?id={d}&amp;color=blue" alt="">
+< автор
+> author
+< участник
+> member
+< Форум отключён.
+> The forum is disabled.
+< <h1>Форум «{h}»</h1>
+> <h1>Forum "{h}"</h1>
+< <span class=m>тем нет</span>
+> <span class=m>no topics</span>
+< <h1>Статистика {h}</h1>
+> <h1>{h} statistics</h1>
+< Стихов и песен
+> Poems and songs
+< Цитат
+> Quotes
+< Черновиков
+> Drafts
+< Участников
+> Members
+< Сейчас на сайте
+> On the site now
+< Прочтений
+> Reads
+< Просмотров
+> Views
+< <img src="/logo64.png{s}" width="48" height="48" align="absmiddle" alt=""> CLIPPER — книг: {d}, цитат: {d}
+> <img src="/logo64.png{s}" width="48" height="48" align="absmiddle" alt=""> CLIPPER — books: {d}, quotes: {d}
+< CLIPPER<br><span style="font-size:8px">книг: {d}</span>
+> CLIPPER<br><span style="font-size:8px">books: {d}</span>
+< Книга (карточка)
+> Book (card)
+< любая книга: /e/b/{id}
+> any book: /e/b/{id}
+< Книга (глава)
+> Book (chapter)
+< ?ch=N — читать главу прямо во фрейме
+> ?ch=N — read a chapter right in the frame
+< Стихотворение
+> Poem
+< Песня с аккордами
+> Song with chords
+< Цитата с фильтром
+> Quote with a filter
+< /e/c/-3?op=Зри&sz=2
+>
+< Статья
+> Article
+< Участник
+> Member
+< Форум
+> Forum
+< Статистика
+> Statistics
+< Плашка 88×31
+> 88×31 button
+< Баннер 468×60
+> 468×60 banner
+< прочтения книги
+> book reads
+< комментарии (PNG)
+> comments (PNG)
+< книги автора
+> author's books
+< участников
+> members
+< сейчас на сайте
+> on the site now
+< раздел стихов
+> poems section
+< <h2>Встраивание: демонстрация</h2>
+> <h2>Embedding: demonstration</h2>
+< <div class="box"><b>Встраивание сейчас отключено администратором — фреймы покажут заглушку.</b></div>
+> <div class="box"><b>Embedding is currently disabled by the administrator — the frames will show a placeholder.</b></div>
+< \n<p>Любой кусок библиотеки можно вставить на свою страницу через <code>&lt;iframe&gt;</code>. Ссылки внутри открываются в основном окне.</p>\n<table class="list">
+> \n<p>Any piece of the library can be inserted into your page with an <code>&lt;iframe&gt;</code>. Links inside open in the main window.</p>\n<table class="list">
+< </table>\n<h3>Бейджи</h3><p class="muted">Формат <code>/x/{вид}/{метод}[.svg|.png]?id=&amp;label=&amp;color=</code>; без расширения — JSON.</p>\n<table class="list">
+> </table>\n<h3>Badges</h3><p class="muted">Format <code>/x/{kind}/{method}[.svg|.png]?id=&amp;label=&amp;color=</code>; without an extension — JSON.</p>\n<table class="list">
+< <tr><td><img src="{h}" alt="{s}"></td><td>{s}</td><td><code>{h}</code> · <a href="{h}{h}">JSON</a></td></tr>
+> <tr><td><img src="{h}" alt="{s}"></td><td>{s}</td><td><code>{h}</code> · <a href="{h}{h}">JSON</a></td></tr>
+< Встраивание
+> Embedding
+
+# src/pages/fed.zig
+< <h2>Федерация</h2>
+> <h2>Federation</h2>
+< \n<p>Сайты федерации доверяют друг другу вход: участник одного сайта заходит на другой под своим именем, без пароля и регистрации.</p>
+> \n<p>Federation sites trust each other's sign-in: a member of one site enters another under their own name, without a password or sign-up.</p>
+< \n<div class="box">Вы вошли с сайта <b>{h}</b> как <b>{h}</b>. Пароля здесь у вас нет: вход держится на токене, который гаснет через 45 минут бездействия или с закрытием браузера. <a href="{U}/logout{E}">Выйти</a></div>
+> \n<div class="box">You came from site <b>{h}</b> as <b>{h}</b>. You have no password here: the sign-in rests on a token that expires after 45 minutes of inactivity or when the browser closes. <a href="{U}/logout{E}">Sign out</a></div>
+< \n<h3>Перейти на другой сайт</h3>
+> \n<h3>Go to another site</h3>
+< <p class="box">Чтобы перейти на другой сайт под своим именем, сначала <a href="{U}/signin?back={q}{E}">войдите</a> здесь.</p>
+> <p class="box">To go to another site under your own name, first <a href="{U}/signin?back={q}{E}">sign in</a> here.</p>
+< <p class="muted">Гости с других сайтов и администратор /u/0 дальше по федерации не ходят.</p>
+> <p class="muted">Guests from other sites and the /u/0 administrator do not go further through the federation.</p>
+< <input type="hidden" name="domain" value="{h}"><input type="submit" value="Перейти"></form></td></tr>
+> <input type="hidden" name="domain" value="{h}"><input type="submit" value="Go"></form></td></tr>
+< <p class="muted">Сайтов, куда разрешён переход, пока нет.</p>
+> <p class="muted">There are no sites to go to yet.</p>
+< Другой сайт: <input name="domain" size="30" value="{h}"> <input type="submit" value="Перейти">\n<div class="muted">Новый сайт запишется в список федерации; перейти получится, если администратор разрешил переход на новые сайты.</div></form>
+> Another site: <input name="domain" size="30" value="{h}"> <input type="submit" value="Go">\n<div class="muted">A new site will be added to the federation list; going there will work if the administrator allowed going to new sites.</div></form>
+< \n<h3>Войти сюда с другого сайта</h3>
+> \n<h3>Sign in here from another site</h3>
+< <p class="muted">Сайтов, с которых разрешён вход, пока нет.</p>
+> <p class="muted">There are no sites allowed to sign in from yet.</p>
+< Другой сайт: <input name="domain" size="30"> <input type="submit" value="Войти оттуда">\n<div class="muted">Откроется страница федерации того сайта: войдите там и нажмите «Перейти».</div></form>
+> Another site: <input name="domain" size="30"> <input type="submit" value="Sign in from there">\n<div class="muted">That site's federation page will open: sign in there and press "Go".</div></form>
+< Федерация
+> Federation
+< Это не имя сайта.
+> This is not a site name.
+< Сайт не знает своего имени: запрос пришёл без заголовка Host.
+> The site does not know its name: the request came without a Host header.
+< Это и есть этот сайт.
+> That is this site.
+< Сайт 
+> Site 
+<  не входит в федерацию этого сайта.
+>  is not in this site's federation.
+< Гости с других сайтов и администратор /u/0 дальше по федерации не ходят.
+> Guests from other sites and the /u/0 administrator do not go further through the federation.
+< Сайт не записан в список федерации.
+> The site is not in the federation list.
+< Переход на 
+> Going to 
+<  администратор пока не разрешил.
+>  has not been allowed by the administrator yet.
+< Запрос федерации не разобран.
+> The federation request was not parsed.
+< Вход с сайта 
+> Sign-in from site 
+< Список федерации полон.
+> The federation list is full.
+<  работает по https, а эта сборка сервера (для Windows XP) проверять https не умеет.
+>  works over https, and this server build (for Windows XP) cannot verify https.
+<  не прошёл проверку сертификата https.
+>  failed the https certificate check.
+<  ведёт во внутреннюю сеть; такой сайт должен быть назван в списке федерации.
+>  leads into an internal network; such a site must be named in the federation list.
+<  не ответил вовремя.
+>  did not answer in time.
+<  не найден.
+>  was not found.
+<  не отвечает.
+>  does not answer.
+<  не подтвердил вход: билет уже использован, просрочен или выписан не сюда.
+>  did not confirm the sign-in: the ticket was already used, expired or issued for another site.
+<  записан в список федерации; вход с него откроется, когда разрешит администратор.
+>  was added to the federation list; sign-in from it will open once the administrator allows it.
+< Этому гостю вход закрыт администратором.
+> The administrator has closed sign-in for this guest.
+< Гость с сайта 
+> Guest from site 
+<  (федерация).
+>  (federation).
+
+# src/pages/forum.zig
+<  ч
+>  h
+< {d} мин
+> {d} min
+< <h2>Форумы</h2>
+> <h2>Forums</h2>
+< Тем
+> Topics
+< Описание
+> Description
+< \n<h2>Анонимные доски</h2><p class="muted">Без регистрации. Треды удаляются автоматически по истечении срока жизни.</p>
+> \n<h2>Anonymous boards</h2><p class="muted">No sign-up. Threads are deleted automatically when their lifetime runs out.</p>
+< Доска
+> Board
+< Тредов
+> Threads
+< Срок жизни
+> Lifetime
+< </table>\n<h3>Ответить</h3>
+> </table>\n<h3>Reply</h3>
+< <input type="hidden" name="topic" value="{d}">От имени: <b>{h}</b><br><textarea name="text" rows="4" cols="60" style="width:100%"></textarea><br><input type="submit" value="Отправить"></form>
+> <input type="hidden" name="topic" value="{d}">As: <b>{h}</b><br><textarea name="text" rows="4" cols="60" style="width:100%"></textarea><br><input type="submit" value="Send"></form>
+< <h2>Форум: {h}</h2><p class="muted">{h}</p>
+> <h2>Forum: {h}</h2><p class="muted">{h}</p>
+< Тема
+> Topic
+< Ответов
+> Replies
+< Последнее
+> Latest
+< \n<h3>Новая тема</h3>
+> \n<h3>New topic</h3>
+< Тема: <input name="title" size="30"><br><textarea name="text" rows="4" cols="60" style="width:100%"></textarea><br><input type="submit" value="Создать"></form>
+> Topic: <input name="title" size="30"><br><textarea name="text" rows="4" cols="60" style="width:100%"></textarea><br><input type="submit" value="Create"></form>
+< Нет права участвовать на форуме или форум отключён.
+> No right to post on the forum, or the forum is disabled.
+< Без темы
+> No subject
+<  · №{d} · умрёт через {d} мин</span><br>
+>  · No.{d} · dies in {d} min</span><br>
+< \n<table><tr><td>Имя</td><td><input name="name" value="Аноним" size="20"></td></tr>
+> \n<table><tr><td>Name</td><td><input name="name" value="Anonymous" size="20"></td></tr>
+< <tr><td>Тема</td><td><input name="subj" size="30"></td></tr>
+> <tr><td>Subject</td><td><input name="subj" size="30"></td></tr>
+< \n<tr><td>Текст</td><td><textarea name="text" rows="4" cols="50"></textarea></td></tr><tr><td>Картинка</td><td><input type="file" name="img" accept="image/*"></td></tr>\n<tr><td></td><td><input type="submit" value="
+> \n<tr><td>Text</td><td><textarea name="text" rows="4" cols="50"></textarea></td></tr><tr><td>Image</td><td><input type="file" name="img" accept="image/*"></td></tr>\n<tr><td></td><td><input type="submit" value="
+< Создать тред
+> Create a thread
+< "> <span class="muted">тред живёт 
+> "> <span class="muted">a thread lives 
+< <h2>Тред №{d} не найден</h2><p>Скорее всего, он истёк и был автоматически удалён.</p><p><a href="{U}/f/{s}{E}">Вернуться на /{s}/</a></p>
+> <h2>Thread No.{d} not found</h2><p>Most likely it expired and was deleted automatically.</p><p><a href="{U}/f/{s}{E}">Back to /{s}/</a></p>
+< Тред удалён
+> Thread deleted
+< тред умер
+> the thread is dead
+< <h2>/{s}/ — {h}</h2>
+> <h2>/{s}/ — {h}</h2>
+< <hr><a href="{U}/f/{s}{E}">[назад]</a>
+> <hr><a href="{U}/f/{s}{E}">[back]</a>
+< <h2 align="center">/{s}/ — {h}</h2>
+> <h2 align="center">/{s}/ — {h}</h2>
+< <p class="muted">Тредов нет — все истекли. Создайте новый.</p>
+> <p class="muted">No threads — all expired. Create a new one.</p>
+<  <a href="{U}/f/{s}?th={d}{E}">[ответить]</a>
+>  <a href="{U}/f/{s}?th={d}{E}">[reply]</a>
+< <div class="muted">пропущено ответов: {d}</div>
+> <div class="muted">replies omitted: {d}</div>
+< Доски
+> Boards
+< Доски отключены.
+> Boards are disabled.
+< Форумы и доски сейчас только для чтения.
+> Forums and boards are read-only now.
+< Картинка не сохранена.
+> The image was not saved.
+< Аноним
+> Anonymous
+
+# src/pages/h.zig
+< <p class="muted">Пусто.</p>
+> <p class="muted">Empty.</p>
+< <p class="muted">Функция отключена администратором.</p>
+> <p class="muted">The feature has been disabled by the administrator.</p>
+< <p class="box">Чтобы участвовать, <a href="{U}/signin?back={q}{E}">войдите</a> или <a href="{U}/signup{E}">зарегистрируйтесь</a>.</p>
+> <p class="box">To take part, <a href="{U}/signin?back={q}{E}">sign in</a> or <a href="{U}/signup{E}">sign up</a>.</p>
+< <p class="box">У вас нет права: <b>{s}</b>.</p>
+> <p class="box">You lack the right: <b>{s}</b>.</p>
+
+# src/pages/home.zig
+< библиотека
+> library
+< песенник
+> songbook
+< цитатник
+> quote book
+< форум
+> forum
+< мастерская
+> workshop
+< фонотека
+> sound library
+< Цифровая библиотека: цитаты, статьи, черновики, книги и серии, поэзия, песни с нотами, форумы и анонимные доски.
+> A digital library: quotes, articles, drafts, books and series, poetry, songs with notes, forums and anonymous boards.
+< цитаты
+> quotes
+< статьи и черновики
+> articles and drafts
+< стихи и песни с нотами
+> poems and songs with notes
+< форумы и анонимные доски
+> forums and anonymous boards
+< цитат, книг, стихов и черновиков
+> quotes, books, poems and drafts
+< цитат
+> quotes
+< книг
+> books
+< стихов
+> poems
+< черновиков и статей
+> drafts and articles
+< разговоров
+> conversations
+<  и 
+>  and 
+< Книжное братство цитат
+> A book brotherhood of quotes
+< Книжное братство
+> A book brotherhood
+< Братство стихов и песен
+> A brotherhood of poems and songs
+< Братство цитат
+> A brotherhood of quotes
+< Братство собеседников
+> A brotherhood of talkers
+< Братство пишущих
+> A brotherhood of writers
+< Братство чтецов
+> Fellowship of readers
+< Журнал "Цитатник"
+> "Quote Book" magazine
+< Журнал "Песенник"
+> "Songbook" magazine
+< Журнал "Форум"
+> "Forum" magazine
+< Журнал "Мастерская"
+> "Workshop" magazine
+< Журнал "Читальня"
+> "Reading Room" magazine
+< Журнал "Фонотека"
+> Journal "Sound Library"
+< Главная
+> Home
+< Новинки
+> New arrivals
+< Новые книги
+> New books
+< <table class="list sortable" width="100%"><tr><th>Название</th><th>Автор</th><th>Год</th><th>Первая строка</th></tr>
+> <table class="list sortable" width="100%"><tr><th>Title</th><th>Author</th><th>Year</th><th>First line</th></tr>
+< <div><a href="{U}/b/{d}{E}">{h}</a> (<a href="{U}/q/{d}{E}">читать</a>)
+> <div><a href="{U}/b/{d}{E}">{h}</a> (<a href="{U}/q/{d}{E}">read</a>)
+<  скачать: (<a href="/b/{d}/fb2">fb2</a>) - (<a href="/b/{d}/epub">epub</a>)
+>  download: (<a href="/b/{d}/fb2">fb2</a>) - (<a href="/b/{d}/epub">epub</a>)
+< Серии
+> Series
+< <div><a href="{U}/b/{d}{E}">{h}</a> — 
+> <div><a href="{U}/b/{d}{E}">{h}</a> — 
+< <p><a href="{U}/b{E}">Все книги &raquo;</a></p>\n
+> <p><a href="{U}/b{E}">All books &raquo;</a></p>\n
+< По первой строке
+> By first line
+< <table class="list sortable" width="100%"><tr><th>Первая строка</th><th>Название</th><th>Жанр</th><th>Автор</th></tr>
+> <table class="list sortable" width="100%"><tr><th>First line</th><th>Title</th><th>Genre</th><th>Author</th></tr>
+< Стихи и песни
+> Poems and songs
+< <p><a href="{U}/p{E}">Все стихи и песни &raquo;</a></p>\n
+> <p><a href="{U}/p{E}">All poems and songs &raquo;</a></p>\n
+<  (аккорды)
+>  (chords)
+<  · {h}</span><br><i>{h}</i></p>\n
+>  · {h}</span><br><i>{h}</i></p>\n
+<  · {h}</small><br><small><i>{h}</i></small></li>\n
+>  · {h}</small><br><small><i>{h}</i></small></li>\n
+< <div><i>{h}</i> — <a href="{U}/p/{d}{E}">{h}</a> - 
+> <div><i>{h}</i> — <a href="{U}/p/{d}{E}">{h}</a> - 
+< Цитата дня
+> Quote of the day
+< <p class="muted">Цитат пока нет: их делают из книг — выделите фрагмент на странице чтения.</p>\n
+> <p class="muted">No quotes yet: they are made from books — select a fragment on a reading page.</p>\n
+< Свежие цитаты
+> Fresh quotes
+< Люди
+> People
+< <table class="list sortable"><tr><th>Кто</th><th>Цитат</th></tr>
+> <table class="list sortable"><tr><th>Who</th><th>Quotes</th></tr>
+< Персонажи
+> Characters
+< <div><a href="{U}/c/{d}{E}">{h}</a> — 
+> <div><a href="{U}/c/{d}{E}">{h}</a> — 
+< <p><a href="{U}/c{E}">Все цитаты &raquo;</a></p>\n
+> <p><a href="{U}/c{E}">All quotes &raquo;</a></p>\n
+< <blockquote><font size="+1">{h}</font><br><span class="muted">— 
+> <blockquote><font size="+1">{h}</font><br><span class="muted">— 
+< <blockquote>{h}<br><span class="muted">— 
+> <blockquote>{h}<br><span class="muted">— 
+<  · <a href="{U}/p/{d}#p{d}{E}">к месту в стихе</a>
+>  · <a href="{U}/p/{d}#p{d}{E}">to the place in the poem</a>
+<  · <a href="{U}/d/{d}#p{d}{E}">к месту в статье</a>
+>  · <a href="{U}/d/{d}#p{d}{E}">to the place in the article</a>
+<  · <a href="{U}/b/{d}/{d}#p{d}{E}">к месту в книге</a>
+>  · <a href="{U}/b/{d}/{d}#p{d}{E}">to the place in the book</a>
+< Свежие черновики
+> Fresh drafts
+< <table class="list sortable" width="100%"><tr><th>Название</th><th>Автор</th><th>Дата</th><th>Первая строка</th></tr>
+> <table class="list sortable" width="100%"><tr><th>Title</th><th>Author</th><th>Date</th><th>First line</th></tr>
+< <div><a href="{U}/d/{d}{E}"><b>{h}</b></a> — 
+> <div><a href="{U}/d/{d}{E}"><b>{h}</b></a> — 
+< <p><a href="{U}/d{E}">Все черновики и статьи &raquo;</a></p>\n
+> <p><a href="{U}/d{E}">All drafts and articles &raquo;</a></p>\n
+< <tr><th>Форум</th><th>Тем</th><th>Сообщений</th><th>Последнее</th></tr>
+> <tr><th>Forum</th><th>Topics</th><th>Posts</th><th>Latest</th></tr>
+< Анонимные доски
+> Anonymous boards
+< <div><a href="{U}/f/{s}{E}">/{s}/</a> — {h}</div>\n
+> <div><a href="{U}/f/{s}{E}">/{s}/</a> — {h}</div>\n
+< <p><a href="{U}/f{E}">Все форумы &raquo;</a></p>\n
+> <p><a href="{U}/f{E}">All forums &raquo;</a></p>\n
+
+# src/pages/main.zig
+< \n<h2>Добро пожаловать в {h}</h2>
+> \n<h2>Welcome to {h}</h2>
+< \n</tr></table>\n<h3>Новое в библиотеке</h3>\n
+> \n</tr></table>\n<h3>New in the library</h3>\n
+< Что
+> What
+< Адрес
+> Address
+< Впервые здесь? Прочтите <a href="{U}/b/0{E}"><b>книгу о сайте</b></a> · 
+> New here? Read <a href="{U}/b/0{E}"><b>the book about the site</b></a> · 
+< <a href="{U}/e{E}">встраивание на свой сайт</a> · <a href="{U}/help{E}">схема адресов</a></div>\n
+> <a href="{U}/e{E}">embedding on your site</a> · <a href="{U}/help{E}">address scheme</a></div>\n
+< <h3>Цитата дня</h3>\n
+> <h3>Quote of the day</h3>\n
+< <h2>Схема адресов</h2><table class="list"><tr><th>Адрес</th><th>Значение</th></tr>
+> <h2>Address scheme</h2><table class="list"><tr><th>Address</th><th>Meaning</th></tr>
+< <tr><td><code>/p/{piece}</code></td><td>piece&gt;0 — стихи, верлибры, бардовская песня; piece&lt;0 — песня с нотами. Пример: <a href='{U}/p/2{E}'>/p/2</a>, <a href='{U}/p/-1{E}'>/p/-1</a></td></tr>
+> <tr><td><code>/p/{piece}</code></td><td>piece&gt;0 — poems, free verse, bard songs; piece&lt;0 — a song with notes. Example: <a href='{U}/p/2{E}'>/p/2</a>, <a href='{U}/p/-1{E}'>/p/-1</a></td></tr>
+< <tr><td><code>/b/{book}</code></td><td>book&gt;0 — книга, book&lt;0 — серия книг. <a href='{U}/b/2{E}'>/b/2</a>, <a href='{U}/b/-1{E}'>/b/-1</a></td></tr>
+> <tr><td><code>/b/{book}</code></td><td>book&gt;0 — a book, book&lt;0 — a book series. <a href='{U}/b/2{E}'>/b/2</a>, <a href='{U}/b/-1{E}'>/b/-1</a></td></tr>
+< <tr><td><code>/q/{book&gt;0}</code></td><td>сразу режим чтения книги, ?ch=N — глава. <a href='{U}/q/2{E}'>/q/2</a></td></tr>
+> <tr><td><code>/q/{book&gt;0}</code></td><td>straight to reading the book, ?ch=N — a chapter. <a href='{U}/q/2{E}'>/q/2</a></td></tr>
+< <tr><td><code>/c/{person}</code></td><td>цитаты: person&gt;0 — автор, &lt;0 — персонаж (автор → книги, заводится заранее). Цитаты делаются только из книги: выделить текст, правая кнопка мыши. Фильтр: op, ed, sz. <a href='{U}/c{E}'>/c</a></td></tr>
+> <tr><td><code>/c/{person}</code></td><td>quotes: person&gt;0 — an author, &lt;0 — a character (author → books, created in advance). Quotes are made only from a book: select text, right mouse button. Filter: op, ed, sz. <a href='{U}/c{E}'>/c</a></td></tr>
+< <tr><td><code>/bookmarks</code></td><td>мои закладки с примечаниями (личные)</td></tr>
+> <tr><td><code>/bookmarks</code></td><td>my bookmarks with notes (private)</td></tr>
+< <tr><td><code>/v/{rec}</code></td><td>rec&gt;0 — запись: аудиокнига (к книге /b) или исполнение стиха или песни (к /p); rec&lt;0 — чтец или исполнитель. Файл — /v/{rec}.mp3 (MP3 128 кбит/с). <a href='{U}/v{E}'>/v</a></td></tr>
+> <tr><td><code>/v/{rec}</code></td><td>rec&gt;0 — a recording: an audiobook (for a book in /b) or a performance of a poem or song (for /p); rec&lt;0 — a reader or performer. The file is /v/{rec}.mp3 (MP3 at 128 kbit/s). <a href='{U}/v{E}'>/v</a></td></tr>
+< <tr><td><code>/d/{draft}</code></td><td>draft&gt;0 — черновик/фрагмент (можно перенести в /p или объединить в /b — после этого только чтение); draft&lt;0 — статья. <a href='{U}/d/1{E}'>/d/1</a>, <a href='{U}/d/-1{E}'>/d/-1</a></td></tr>
+> <tr><td><code>/d/{draft}</code></td><td>draft&gt;0 — a draft/fragment (can be moved to /p or merged into /b — after that read-only); draft&lt;0 — an article. <a href='{U}/d/1{E}'>/d/1</a>, <a href='{U}/d/-1{E}'>/d/-1</a></td></tr>
+< <tr><td><code>/f/{forum:uint}</code></td><td>обычный форум. <a href='{U}/f/1{E}'>/f/1</a></td></tr>
+> <tr><td><code>/f/{forum:uint}</code></td><td>an ordinary forum. <a href='{U}/f/1{E}'>/f/1</a></td></tr>
+< <tr><td><code>/f/{board:str}</code></td><td>анонимная имиджборда с автоудалением тредов. <a href='{U}/f/b{E}'>/f/b</a></td></tr>
+> <tr><td><code>/f/{board:str}</code></td><td>an anonymous imageboard with auto-deleting threads. <a href='{U}/f/b{E}'>/f/b</a></td></tr>
+< <tr><td><code>/u/{user}</code></td><td>user&gt;0 — пользователь, &lt;0 — автор (Unveiler / Upbuilder). <a href='{U}/u/1001{E}'>/u/1001</a>, <a href='{U}/u/-101{E}'>/u/-101</a></td></tr>
+> <tr><td><code>/u/{user}</code></td><td>user&gt;0 — a member, &lt;0 — an author (Unveiler / Upbuilder). <a href='{U}/u/1001{E}'>/u/1001</a>, <a href='{U}/u/-101{E}'>/u/-101</a></td></tr>
+< <tr><td><code>/b/0</code></td><td>книга о самом сайте. <a href='{U}/b/0{E}'>/b/0</a></td></tr>
+> <tr><td><code>/b/0</code></td><td>the book about the site itself. <a href='{U}/b/0{E}'>/b/0</a></td></tr>
+< <tr><td><code>/e</code></td><td>демонстрация встраивания (iframe) и бейджей. <a href='{U}/e{E}'>/e</a></td></tr>
+> <tr><td><code>/e</code></td><td>embedding (iframe) and badge demo. <a href='{U}/e{E}'>/e</a></td></tr>
+< <tr><td><code>/signin /signup /logout /panel</code></td><td>вход, регистрация, сеансы и выход, панель (сайтом управляет /u/0)</td></tr>
+> <tr><td><code>/signin /signup /logout /panel</code></td><td>sign-in, sign-up, sessions and sign-out, panel (the site is run by /u/0)</td></tr>
+< <tr><td><code>?m=true|false</code></td><td>мобильная версия (по умолчанию — по User-Agent)</td></tr>
+> <tr><td><code>?m=true|false</code></td><td>mobile version (by default — by User-Agent)</td></tr>
+< <tr><td><code>?t=тема</code></td><td>темы: flibusta (по умолчанию), samlib, proza, nepomn; суффиксы -light, -dark, -time; спец.: light, dark, time. Без суффикса — по настройкам устройства.</td></tr>
+> <tr><td><code>?t=theme</code></td><td>themes: flibusta (default), samlib, proza, nepomn; suffixes -light, -dark, -time; special: light, dark, time. Without a suffix — by the device settings.</td></tr>
+< </table><p class="muted">Параметры m и t сохраняются при переходах по всем ссылкам сайта.</p>
+> </table><p class="muted">The m and t parameters are kept when following any link on the site.</p>
+< Схема адресов
+> Address scheme
+< <h2>Поиск</h2><form action="/s">
+> <h2>Search</h2><form action="/s">
+< <input name="q" size="40" value="{h}"> <input type="submit" value="Найти"></form>
+> <input name="q" size="40" value="{h}"> <input type="submit" value="Search"></form>
+< Тип
+> Type
+< <td>стих/песня</td><td><a href="{U}/p/{d}{E}">{h}</a></td><td>
+> <td>poem/song</td><td><a href="{U}/p/{d}{E}">{h}</a></td><td>
+< <td>книга</td><td><a href="{U}/b/{d}{E}">{h}</a></td><td>
+> <td>book</td><td><a href="{U}/b/{d}{E}">{h}</a></td><td>
+< <td>серия</td><td><a href="{U}/b/{d}{E}">{h}</a></td><td>
+> <td>series</td><td><a href="{U}/b/{d}{E}">{h}</a></td><td>
+< <td>цитата</td><td><a href="{U}/b/{d}/{d}#p{d}{E}">{h}…</a></td><td>
+> <td>quote</td><td><a href="{U}/b/{d}/{d}#p{d}{E}">{h}…</a></td><td>
+< <td>человек</td><td><a href="{U}/c/{d}{E}">{h}</a></td><td></td></tr>
+> <td>person</td><td><a href="{U}/c/{d}{E}">{h}</a></td><td></td></tr>
+< <td>персонаж</td><td><a href="{U}/c/{d}{E}">{h}</a></td><td></td></tr>
+> <td>character</td><td><a href="{U}/c/{d}{E}">{h}</a></td><td></td></tr>
+< <td>участник</td><td><a href="{U}/u/{d}{E}">{h}</a></td><td></td></tr>
+> <td>member</td><td><a href="{U}/u/{d}{E}">{h}</a></td><td></td></tr>
+< Найдено: 
+> Found: 
+< <p><a href="{U}/p/new{E}">Выложить стих или песню</a> — от своего имени или от имени любого автора</p>\n
+> <p><a href="{U}/p/new{E}">Post a poem or a song</a> — in your own name or in the name of any author</p>\n
+< <p class="muted">Рубрика: <b>{h}</b> · <a href="{U}/p{E}">все</a></p>
+> <p class="muted">Rubric: <b>{h}</b> · <a href="{U}/p{E}">all</a></p>
+< <h2>Песни с нотами</h2>
+> <h2>Songs with notes</h2>
+< <h2>Стихи, верлибры, бардовская песня</h2>
+> <h2>Poems, free verse, bard songs</h2>
+< Жанр
+> Genre
+<  · <code>/p/{d}</code></div>\n
+>  · <code>/p/{d}</code></div>\n
+< <div class="muted">Выложил: 
+> <div class="muted">Posted by: 
+< <h3>Ноты (ABC-нотация)</h3><pre class="abc">{h}</pre>
+> <h3>Notes (ABC notation)</h3><pre class="abc">{h}</pre>
+< <h3>Аккорды</h3><pre class="abc">{h}</pre><h3>Ноты (ABC-нотация)</h3><pre class="abc">{h}</pre>
+> <h3>Chords</h3><pre class="abc">{h}</pre><h3>Notes (ABC notation)</h3><pre class="abc">{h}</pre>
+< <p><a href="{U}/p/{d}/edit{E}">Править или удалить</a></p>\n
+> <p><a href="{U}/p/{d}/edit{E}">Edit or delete</a></p>\n
+< \n<h3>Ещё у автора</h3>
+> \n<h3>More by the author</h3>
+<  · 
+>
+< <a href="{U}/p/{d}{E}">&laquo; предыдущее</a>
+> <a href="{U}/p/{d}{E}">&laquo; previous</a>
+< <a href="{U}/p/{d}{E}">следующее &raquo;</a>
+> <a href="{U}/p/{d}{E}">next &raquo;</a>
+< Песни с нотами
+> Songs with notes
+< <h2>Авторы (Unveiler / Upbuilder)</h2>
+> <h2>Authors (Unveiler / Upbuilder)</h2>
+< <h2>Пользователи</h2>
+> <h2>Members</h2>
+< Ник
+> Nickname
+< С нами с
+> With us since
+< О себе
+> About
+< Участники
+> Members
+< <h2>{h}</h2><div class="muted">{s} · с {h} · <code>/u/{d}</code></div><p>{h}</p>\n
+> <h2>{h}</h2><div class="muted">{s} · since {h} · <code>/u/{d}</code></div><p>{h}</p>\n
+< пользователь
+> member
+< Сообщения на форуме
+> Forum posts
+< Пользователи
+> Members
+
+# src/pages/marks.zig
+< персонаж
+> character
+< <span class="mq" title="Цитата: {h}">{b}</span><sup><a href="{U}{s}{d}{E}#q{d}" title="цитата №{d}">ц</a></sup>
+> <span class="mq" title="Quote: {h}">{b}</span><sup><a href="{U}{s}{d}{E}#q{d}" title="quote No.{d}">q</a></sup>
+< <span class="mb" title="Закладка: {h}">{b}</span><sup><a href="{U}/bookmarks{E}#m{d}" title="{h}">з</a></sup>
+> <span class="mb" title="Bookmark: {h}">{b}</span><sup><a href="{U}/bookmarks{E}#m{d}" title="{h}">b</a></sup>
+< Примечание:<br><textarea name="note" rows="3" cols="34"></textarea>
+> Note:<br><textarea name="note" rows="3" cols="34"></textarea>
+< Кому приписать:<br><select name="person">
+> Attribute to:<br><select name="person">
+< </select><br><span class="muted">Персонажа нет в списке? <a href="{U}/c{E}">Заведите его</a>.</span>
+> </select><br><span class="muted">The character is not in the list? <a href="{U}/c{E}">Create it</a>.</span>
+< <br><input type="submit" value="Сохранить"> <input type="button" value="Отмена" onclick="cmHide()"></form>
+> <br><input type="submit" value="Save"> <input type="button" value="Cancel" onclick="cmHide()"></form>
+< <div id="cmenu" class="cmenu" style="display:none"><a href="{U}/signin?back={q}{E}">Войдите</a>, чтобы ставить закладки и цитаты.</div>
+> <div id="cmenu" class="cmenu" style="display:none"><a href="{U}/signin?back={q}{E}">Sign in</a> to make bookmarks and quotes.</div>
+< <p class="muted hint"><a href="{U}/signin?back={q}{E}">Войдите</a>, чтобы ставить закладки и цитаты.</p>
+> <p class="muted hint"><a href="{U}/signin?back={q}{E}">Sign in</a> to make bookmarks and quotes.</p>
+< <a href="#" onclick="return cmOpen('bookmark')">&#9998; Закладка с примечанием&hellip;</a>\n
+> <a href="#" onclick="return cmOpen('bookmark')">&#9998; Bookmark with a note&hellip;</a>\n
+< <a href="#" onclick="return cmOpen('quote')">&#8220; Цитата&hellip;</a>
+> <a href="#" onclick="return cmOpen('quote')">&#8220; Quote&hellip;</a>
+< <span class="muted">цитаты: нет права или отключены</span>
+> <span class="muted">quotes: no right or disabled</span>
+< \n<span class="muted">обычное меню — Shift + правая кнопка</span></div>
+> \n<span class="muted">the usual menu — Shift + right button</span></div>
+< Закладка
+> Bookmark
+< Цитата для всех
+> Quote for everyone
+< <div class="box nojs"><b>Отметить фрагмент</b> <span class="muted">(без мыши: выделите и нажмите правую кнопку, или заполните форму)</span>\n<form action="{s}" method="post">
+> <div class="box nojs"><b>Mark a fragment</b> <span class="muted">(without a mouse: select and press the right button, or fill in the form)</span>\n<form action="{s}" method="post">
+< Абзац <select name="para">
+> Paragraph <select name="para">
+< </select>\nтекст <input name="text" size="40"><br>\n
+> </select>\ntext <input name="text" size="40"><br>\n
+< <label><input type="radio" name="kind" value="bookmark" checked> закладка</label>, примечание <input name="note" size="24">\n
+> <label><input type="radio" name="kind" value="bookmark" checked> bookmark</label>, note <input name="note" size="24">\n
+< <label><input type="radio" name="kind" value="quote"{s}> цитата</label>, кому <select name="person">
+> <label><input type="radio" name="kind" value="quote"{s}> quote</label>, to <select name="person">
+< \n<input type="submit" value="Отметить"></form></div>
+> \n<input type="submit" value="Mark"></form></div>
+< <div class="markbar"><input type="button" value="&#9998; Отметить выделенное" onclick="cmShow(null)"></div>
+> <div class="markbar"><input type="button" value="&#9998; Mark the selection" onclick="cmShow(null)"></div>
+< <script type="text/javascript">var cmNoSel = "Сначала выделите текст в книге.";</script>\n
+> <script type="text/javascript">var cmNoSel = "Select text in the book first.";</script>
+< Нет такого абзаца.
+> No such paragraph.
+< Выделенный текст не найден в одном абзаце. Выделяйте внутри одного абзаца.
+> The selected text was not found within one paragraph. Select inside a single paragraph.
+< Слишком длинный фрагмент (до 2000 знаков).
+> The fragment is too long (up to 2000 characters).
+< Нет права на цитаты, или цитаты отключены.
+> No right to quotes, or quotes are disabled.
+< Цитату можно приписать только автору книги или его персонажу.
+> A quote can be attributed only to the book's author or their character.
+< Такая цитата уже есть.
+> This quote already exists.
+< <h2>Мои закладки</h2>
+> <h2>My bookmarks</h2>
+< \n<p class="muted">Закладки видны только вам. Ставятся на странице чтения: выделите текст и нажмите правую кнопку мыши.</p>\n
+> \n<p class="muted">Bookmarks are visible only to you. They are made on a reading page: select text and press the right mouse button.</p>\n
+< <p class="muted">Закладок пока нет.</p>
+> <p class="muted">No bookmarks yet.</p>
+< <div class="box"><a name="m{d}"></a><a href="{U}/b/{d}/{d}#p{d}{E}">стр. {d}, абзац {d}</a> <span class="muted">{h}</span>\n<blockquote>{h}</blockquote>\n<form action="/bookmarks/note" method="post" style="margin:0">
+> <div class="box"><a name="m{d}"></a><a href="{U}/b/{d}/{d}#p{d}{E}">p. {d}, paragraph {d}</a> <span class="muted">{h}</span>\n<blockquote>{h}</blockquote>\n<form action="/bookmarks/note" method="post" style="margin:0">
+< <input type="hidden" name="id" value="{d}">Примечание: <input name="note" size="40" value="{h}"> <input type="submit" value="Сохранить"></form>\n<form action="/bookmarks/del" method="post" style="margin:4px 0 0">
+> <input type="hidden" name="id" value="{d}">Note: <input name="note" size="40" value="{h}"> <input type="submit" value="Save"></form>\n<form action="/bookmarks/del" method="post" style="margin:4px 0 0">
+< <input type="hidden" name="id" value="{d}"><input type="submit" value="Удалить закладку"></form></div>
+> <input type="hidden" name="id" value="{d}"><input type="submit" value="Delete bookmark"></form></div>
+< Закладки
+> Bookmarks
+< Закладка удалена.
+> Bookmark deleted.
+< Примечание сохранено.
+> Note saved.
+< Нет такой закладки.
+> No such bookmark.
+< «<a href="{U}/p/{d}#p{d}{E}">{h}</a>»
+> "<a href="{U}/p/{d}#p{d}{E}">{h}</a>"
+< «<a href="{U}/d/{d}#p{d}{E}">{h}</a>»
+> "<a href="{U}/d/{d}#p{d}{E}">{h}</a>"
+< «<a href="{U}/b/{d}{E}">{h}</a>», <a href="{U}/b/{d}/{d}#p{d}{E}">стр. {d}</a>
+> "<a href="{U}/b/{d}{E}">{h}</a>", <a href="{U}/b/{d}/{d}#p{d}{E}">p. {d}</a>
+<  <span class="muted">[фрагмент]</span>
+>  <span class="muted">[fragment]</span>
+< <br>\n<span class="muted">— <a href="{U}{s}{d}{E}">{h}</a>, 
+> <br>\n<span class="muted">— <a href="{U}{s}{d}{E}">{h}</a>, 
+<  · выложил 
+>  · posted by 
+< <h2>Цитаты</h2>
+> <h2>Quotes</h2>
+< \n<p>Цитаты делаются только из книг: откройте книгу, выделите фрагмент и нажмите правую кнопку мыши. Цитату приписывают автору книги или его персонажу.</p>\n<h3>Авторы</h3>
+> \n<p>Quotes are made only from books: open a book, select a fragment and press the right mouse button. A quote is attributed to the book's author or to their character.</p>\n<h3>Authors</h3>
+< Годы
+> Years
+< Персонажей
+> Characters
+< автор сайта
+> site author
+< \n<h3><a name="chars"></a>Персонажи</h3>
+> \n<h3><a name="chars"></a>Characters</h3>
+< Персонаж
+> Character
+< <span class="muted">все книги автора</span>
+> <span class="muted">all the author's books</span>
+< \n<h3>Последние цитаты</h3>
+> \n<h3>Latest quotes</h3>
+< \n<h3>Завести персонажа</h3>
+> \n<h3>Create a character</h3>
+< \n<table><tr><td>Имя</td><td><input name="name" size="30"></td></tr>\n<tr><td>Автор</td><td><select name="author">
+> \n<table><tr><td>Name</td><td><input name="name" size="30"></td></tr>\n<tr><td>Author</td><td><select name="author">
+< </select></td></tr>\n<tr><td valign="top">Книги</td><td>
+> </select></td></tr>\n<tr><td valign="top">Books</td><td>
+< \n<br><span class="muted">Не отмечено — персонаж относится ко всему, что написал автор. Отмечаются только книги выбранного автора.</span></td></tr>\n<tr><td>О персонаже</td><td><input name="about" size="40"></td></tr>\n<tr><td></td><td><input type="submit" value="Завести персонажа"></td></tr></table></form>
+> \n<br><span class="muted">Nothing checked — the character belongs to everything the author wrote. Only the chosen author's books are checked.</span></td></tr>\n<tr><td>About the character</td><td><input name="about" size="40"></td></tr>\n<tr><td></td><td><input type="submit" value="Create character"></td></tr></table></form>
+< <span class="muted">(персонаж)</span>
+> <span class="muted">(character)</span>
+< \n<h3>Стихи и песни</h3><ul>
+> \n<h3>Poems and songs</h3><ul>
+< \n<h3>Книги</h3><ul>
+> \n<h3>Books</h3><ul>
+< \n<p>Персонажи: 
+> \n<p>Characters: 
+< <p>Автор: 
+> <p>Author: 
+<  · книги: 
+>  · books: 
+< все книги автора
+> all the author's books
+< <b>Привязка к книгам</b><br>\n
+> <b>Tied to books</b><br>\n
+< <span class="muted">у автора нет книг в библиотеке</span>
+> <span class="muted">the author has no books in the library</span>
+< \n<br><span class="muted">Ничего не отмечено — персонаж относится ко всему, что написал автор.</span><br><input type="submit" value="Сохранить"></form>
+> \n<br><span class="muted">Nothing checked — the character belongs to everything the author wrote.</span><br><input type="submit" value="Save"></form>
+< Начало: <input name="op" size="14" value="{h}"> Конец: <input name="ed" size="14" value="{h}"> Предложений: <select name="sz"><option value="">все</option>
+> Start: <input name="op" size="14" value="{h}"> End: <input name="ed" size="14" value="{h}"> Sentences: <select name="sz"><option value="">all</option>
+< </select> <input type="submit" value="Показать"> 
+> </select> <input type="submit" value="Show"> 
+< <a href="{U}/c/{d}{E}">сбросить</a>
+> <a href="{U}/c/{d}{E}">reset</a>
+< </form><h3>Цитаты</h3>
+> </form><h3>Quotes</h3>
+< <p class="muted">Нет цитат (или ничего не найдено по фильтру).</p>
+> <p class="muted">No quotes (or nothing matches the filter).</p>
+< \n<h3>Цитаты персонажей</h3>
+> \n<h3>Characters' quotes</h3>
+< Нет права заводить персонажей.
+> No right to create characters.
+< Укажите имя.
+> Give a name.
+< Нет такого автора.
+> No such author.
+< У этого автора уже есть персонаж с таким именем.
+> This author already has a character with this name.
+< Персонаж «
+> Character "
+< » заведён.
+> " created.
+< Привязка к книгам сохранена.
+> Ties to books saved.
+
+# src/pages/poems.zig
+< верлибр
+> free verse
+< авторская песня
+> singer-songwriter song
+< песня с аккордами
+> song with chords
+< \n<table><tr><td>Название</td><td><input name="title" size="40" value="{h}"></td></tr>\n<tr><td valign="top">Автор</td><td><select name="author">
+> \n<table><tr><td>Title</td><td><input name="title" size="40" value="{h}"></td></tr>\n<tr><td valign="top">Author</td><td><select name="author">
+< <option value="{d}"{s}>я сам ({h})</option>
+> <option value="{d}"{s}>myself ({h})</option>
+< </select><br>или новый: <input name="new_author" size="24"> годы жизни <input name="years" size="10"><br><span class="muted">Имя, которого ещё нет на сайте, заводится как новый автор.</span></td></tr>\n<tr><td>Жанр</td><td><select name="genre">
+> </select><br>or a new one: <input name="new_author" size="24"> years of life <input name="years" size="10"><br><span class="muted">A name not yet on the site becomes a new author.</span></td></tr>\n<tr><td>Genre</td><td><select name="genre">
+< </select> год <input name="year" size="6" value="{h}"></td></tr>\n
+> </select> year <input name="year" size="6" value="{h}"></td></tr>\n
+< <tr><td valign="top">Текст</td><td><textarea name="text" rows="14" cols="60" style="width:100%">{h}</textarea><br>
+> <tr><td valign="top">Text</td><td><textarea name="text" rows="14" cols="60" style="width:100%">{h}</textarea><br>
+< <span class="muted">Для песни с аккордами — ChordPro: аккорды в квадратных скобках прямо в словах, <code>[Am]Ночь, бен[Dm]зин и ветер</code>; припев — между строками <code>{soc}</code> и <code>{eoc}</code>, пояснение — <code>{c: текст}</code>.</span></td></tr>\n
+> <span class="muted">For a song with chords — ChordPro: chords in square brackets right inside the words, <code>[Am]Night, the pet[Dm]rol and the wind</code>; the chorus goes between the lines <code>{soc}</code> and <code>{eoc}</code>, a remark — <code>{c: text}</code>.</span></td></tr>\n
+< <tr><td valign="top">Ноты</td><td><textarea name="notes" rows="4" cols="60" style="width:100%">{h}</textarea><br>
+> <tr><td valign="top">Notes</td><td><textarea name="notes" rows="4" cols="60" style="width:100%">{h}</textarea><br>
+< <span class="muted">Необязательно: мелодия в ABC-нотации (для песен).</span></td></tr>\n<tr><td></td><td><input type="submit" value="Сохранить"></td></tr></table></form>
+> <span class="muted">Optional: the melody in ABC notation (for songs).</span></td></tr>\n<tr><td></td><td><input type="submit" value="Save"></td></tr></table></form>
+< <h2>Выложить стих или песню</h2>
+> <h2>Post a poem or a song</h2>
+< Выложить стих
+> Post a poem
+< Нужны название, текст и автор из списка (или имя нового автора).
+> A title, a text and an author from the list (or a new author's name) are needed.
+< Править может тот, кто выложил, сам автор, сотрудник или /u/0.
+> It can be edited by whoever posted it, the author, a staff member or /u/0.
+< <h2>Правка: {h}</h2>
+> <h2>Editing: {h}</h2>
+< <label><input type="checkbox" name="sure" value="1"> да, удалить насовсем</label> <input type="submit" value="Удалить"></form>
+> <label><input type="checkbox" name="sure" value="1"> yes, delete for good</label> <input type="submit" value="Delete"></form>
+< Правка
+> Editing
+< Удалить может тот, кто выложил, сам автор, сотрудник или /u/0.
+> It can be deleted by whoever posted it, the author, a staff member or /u/0.
+< <p>Автор на сайте: 
+> <p>Author on the site: 
+< <b>Привязка к авторам</b> <span class="muted">(участник сможет править и удалять всё, что выложено от их имени)</span><br>\n
+> <b>Linked authors</b> <span class="muted">(the member will be able to edit and delete everything posted in their names)</span><br>\n
+< Добавить: <select name="add"><option value="">—</option>
+> Add: <select name="add"><option value="">—</option>
+< </select> <input type="submit" value="Сохранить"></form>\n
+> </select> <input type="submit" value="Save"></form>\n
+< Привязывать участников к авторам могут сотрудник и /u/0.
+> Members can be linked to authors by staff and /u/0.
+< <p>Это участник сайта: 
+> <p>This is the site member: 
+
+# src/pages/profile.zig
+< <p>Обсуждения: 
+> <p>Discussions: 
+< <p><a href="{U}{s}{E}">Править профиль</a></p>\n
+> <p><a href="{U}{s}{E}">Edit profile</a></p>\n
+< <tr><td valign="top">Обсуждения</td><td>
+> <tr><td valign="top">Discussions</td><td>
+< <label><input type="checkbox" name="pin" value="{s}"{s}> форум «{h}»</label><br>
+> <label><input type="checkbox" name="pin" value="{s}"{s}> forum "{h}"</label><br>
+< <label><input type="checkbox" name="pin" value="{h}"{s}> доска /f/{h} «{h}»</label><br>
+> <label><input type="checkbox" name="pin" value="{h}"{s}> board /f/{h} "{h}"</label><br>
+< <span class="muted">форумов и досок пока нет</span>
+> <span class="muted">no forums or boards yet</span>
+< <tr><td valign="top">Фото</td><td><input type="file" name="photo" accept="image/*"><br><span class="muted">PNG, JPEG, GIF, WebP или SVG; уменьшается само.</span>
+> <tr><td valign="top">Photo</td><td><input type="file" name="photo" accept="image/*"><br><span class="muted">PNG, JPEG, GIF, WebP or SVG; shrinks by itself.</span>
+< <br><label><input type="checkbox" name="nophoto" value="1"> убрать фото</label>
+> <br><label><input type="checkbox" name="nophoto" value="1"> remove the photo</label>
+< Профиль автора правят сотрудники, /u/0 и привязанные к нему участники.
+> An author's profile is edited by staff, /u/0 and members linked to the author.
+< <h2>Профиль: {h}</h2>
+> <h2>Profile: {h}</h2>
+< \n<table><tr><td>Имя</td><td><input name="name" size="40" value="{h}"></td></tr>\n<tr><td>Годы жизни</td><td><input name="years" size="16" value="{h}"></td></tr>\n<tr><td valign="top">О нём</td><td><textarea name="about" rows="4" cols="60" style="width:100%">{h}</textarea></td></tr>\n
+> \n<table><tr><td>Name</td><td><input name="name" size="40" value="{h}"></td></tr>\n<tr><td>Years of life</td><td><input name="years" size="16" value="{h}"></td></tr>\n<tr><td valign="top">About</td><td><textarea name="about" rows="4" cols="60" style="width:100%">{h}</textarea></td></tr>\n
+< <tr><td></td><td><input type="submit" value="Сохранить"></td></tr></table></form>
+> <tr><td></td><td><input type="submit" value="Save"></td></tr></table></form>
+< Профиль
+> Profile
+< Профиль участника правят он сам, сотрудники и /u/0.
+> A member's profile is edited by the member, staff and /u/0.
+< \n<table><tr><td valign="top">О себе</td><td><textarea name="about" rows="4" cols="60" style="width:100%">{h}</textarea></td></tr>\n
+> \n<table><tr><td valign="top">About me</td><td><textarea name="about" rows="4" cols="60" style="width:100%">{h}</textarea></td></tr>\n
+< Папка картинок недоступна.
+> The pictures folder is unavailable.
+< Фото не разобралось: нужен PNG, JPEG, GIF, WebP или SVG.
+> The photo could not be read: PNG, JPEG, GIF, WebP or SVG is needed.
+
+# src/pages/source.zig
+< <div class="muted">Источник: 
+> <div class="muted">Source: 
+< <tr><td>Источник</td><td><input name="source" size="40" value="{h}"><br>
+> <tr><td>Source</td><td><input name="source" size="40" value="{h}"><br>
+< <span class="muted">Необязательно: откуда произведение — адрес или название (mrakopedia, arxiv, habr…).</span></td></tr>\n
+> <span class="muted">Optional: where the work comes from — an address or a name (mrakopedia, arxiv, habr…).</span></td></tr>\n
+
+# src/pages/voice.zig
+<  (автор)
+>  (author)
+< автор 
+> author 
+< <span class="muted">книги нет</span>
+> <span class="muted">no book</span>
+< <span class="muted">текста нет</span>
+> <span class="muted">no text</span>
+< <h2>Записи</h2><p>Аудиокниги и авторское исполнение: стихи читают, песни поют — авторы, барды, чтецы. Всё звучит в MP3 128 кбит/с, как до 2003 года: играет любой проигрыватель.</p>\n
+> <h2>Recordings</h2><p>Audiobooks and authors' performances: poems read aloud, songs sung by authors, bards and readers. Everything plays as MP3 at 128 kbit/s, like before 2003: any player will do.</p>\n
+< <p><a href="{U}/v/new{E}">Загрузить запись</a></p>\n
+> <p><a href="{U}/v/new{E}">Upload a recording</a></p>\n
+< <h3>Аудиокниги</h3>
+> <h3>Audiobooks</h3>
+< <h3>Исполнения стихов и песен</h3>
+> <h3>Performances of poems and songs</h3>
+< Запись
+> Recording
+< Читает
+> Read by
+< Длительность
+> Length
+< Стих или песня
+> Poem or song
+< Исполняет
+> Performed by
+< <p class="muted">Записей пока нет.</p>\n
+> <p class="muted">No recordings yet.</p>\n
+< <h3>Чтецы и исполнители</h3><ul>
+> <h3>Readers and performers</h3><ul>
+<  <span class="muted">· записей: {d}</span></li>
+>  <span class="muted">· recordings: {d}</span></li>
+< <h2>{h}</h2>\n<div class="muted">{s} · 
+> <h2>{h}</h2>\n<div class="muted">{s} · 
+< аудиокнига
+> audiobook
+< исполнение
+> performance
+<  · читает 
+>  · read by 
+<  · исполняет 
+>  · performed by 
+<  · <code>/v/{d}</code></div>\n
+>  · <code>/v/{d}</code></div>\n
+< Книги к записи пока нет: <a href="{U}/v/{d}/edit{E}">привязать к выложенной</a>
+> This recording has no book yet: <a href="{U}/v/{d}/edit{E}">link it to an uploaded one</a>
+<  или <a href="{U}/b/upload?voice={d}{E}">выложить книгу</a>
+>  or <a href="{U}/b/upload?voice={d}{E}">upload the book</a>
+< Текста к записи пока нет: <a href="{U}/v/{d}/edit{E}">привязать к выложенному стиху или песне</a>
+> This recording has no text yet: <a href="{U}/v/{d}/edit{E}">link it to an uploaded poem or song</a>
+<  или <a href="{U}/p/new?voice={d}{E}">выложить текст</a>
+>  or <a href="{U}/p/new?voice={d}{E}">post the text</a>
+< <div class="muted">Загрузил: 
+> <div class="muted">Uploaded by: 
+< Слушать
+> Listen
+< Скачать MP3
+> Download MP3
+< </a> <span class="muted">· {s} · {s} МБ · 128 кбит/с</span></p>\n
+> </a> <span class="muted">· {s} · {s} MB · 128 kbit/s</span></p>\n
+< <h3>Слова исполнения</h3>
+> <h3>Words as performed</h3>
+< <h3>Слова</h3>
+> <h3>Words</h3>
+< <p><a href="{U}/v/{d}/edit{E}">Править или удалить</a></p>\n
+> <p><a href="{U}/v/{d}/edit{E}">Edit or delete</a></p>\n
+< чтец и исполнитель
+> reader and performer
+< <p>Это автор: 
+> <p>This is the author: 
+< <h3>Записи</h3><ul>
+> <h3>Recordings</h3><ul>
+< <li><a href="{U}/v/{d}{E}">{h}</a> <span class="muted">· 
+> <li><a href="{U}/v/{d}{E}">{h}</a> <span class="muted">· 
+<  · {s}</span></li>
+>  · {s}</span></li>
+< <p><a href="{U}/v/{d}/edit{E}">Править</a></p>\n
+> <p><a href="{U}/v/{d}/edit{E}">Edit</a></p>\n
+< Править чтеца могут привязанный к нему участник, сотрудник и /u/0.
+> A reader can be edited by a member bound to them, staff and /u/0.
+< \n<table><tr><td>Имя</td><td><input name="name" size="40" value="{h}"></td></tr>\n<tr><td>Годы жизни</td><td><input name="years" size="12" value="{h}"></td></tr>\n<tr><td valign="top">О чтеце</td><td><textarea name="about" rows="6" cols="60" style="width:100%">{h}</textarea></td></tr>\n
+> \n<table><tr><td>Name</td><td><input name="name" size="40" value="{h}"></td></tr>\n<tr><td>Years of life</td><td><input name="years" size="12" value="{h}"></td></tr>\n<tr><td valign="top">About the reader</td><td><textarea name="about" rows="6" cols="60" style="width:100%">{h}</textarea></td></tr>\n
+< <tr><td valign="top">Это автор</td><td>
+> <tr><td valign="top">This is the author</td><td>
+< <br><span class="muted">Если чтец — сам автор произведений: его записи помечаются «(автор)», а на странице автора видно, что он читает своё.</span></td></tr>\n
+> <br><span class="muted">If the reader is the author of the works: their recordings are marked “(author)”, and the author's page shows that they read their own work.</span></td></tr>\n
+< Нужно имя.
+> A name is required.
+< Такого автора нет.
+> No such author.
+< <select name="author"><option value="">—</option>
+> <select name="author"><option value="">—</option>
+< <tr><td valign="top">Что</td><td>
+> <tr><td valign="top">What</td><td>
+< <label><input type="radio" name="kind" value="book"{s}> аудиокнига; книга номер <input name="book" size="6" value="{h}"></label> <span class="muted">(/b/N)</span><br>
+> <label><input type="radio" name="kind" value="book"{s}> audiobook; book number <input name="book" size="6" value="{h}"></label> <span class="muted">(/b/N)</span><br>
+< <label><input type="radio" name="kind" value="perf"{s}> исполнение; стих или песня номер <input name="piece" size="6" value="{h}"></label> <span class="muted">(/p/N)</span><br>
+> <label><input type="radio" name="kind" value="perf"{s}> performance; poem or song number <input name="piece" size="6" value="{h}"></label> <span class="muted">(/p/N)</span><br>
+< <span class="muted">Номер можно оставить пустым: книгу или текст привяжете позже — или выложите их со страницы записи.</span></td></tr>\n
+> <span class="muted">The number may be left empty: link the book or text later — or upload them from the recording's page.</span></td></tr>\n
+< <tr><td valign="top">Автор</td><td>
+> <tr><td valign="top">Author</td><td>
+<  или новый: <input name="new_author" size="24"> годы жизни <input name="author_years" size="10"><br><span class="muted">Только для записи без книги или стиха: иначе автор — их автор.</span></td></tr>\n
+>  or a new one: <input name="new_author" size="24"> years of life <input name="author_years" size="10"><br><span class="muted">Only for a recording without a book or poem: otherwise the author is theirs.</span></td></tr>\n
+< <tr><td valign="top">Чтец или исполнитель</td><td><select name="reader"><option value="">—</option>
+> <tr><td valign="top">Reader or performer</td><td><select name="reader"><option value="">—</option>
+<  (это я)
+>  (that's me)
+< </select><br>или новый: <input name="new_reader" size="24"> годы жизни <input name="years" size="10"><br><label><input type="checkbox" name="me" value="1"> новый чтец — это я (привязать к моей учётной записи)</label><br>
+> </select><br>or a new one: <input name="new_reader" size="24"> years of life <input name="years" size="10"><br><label><input type="checkbox" name="me" value="1"> the new reader is me (bind to my account)</label><br>
+< <label><input type="checkbox" name="by_author" value="1"{s}> читает или исполняет сам автор</label> <span class="muted">(чтец заводится под именем автора и связывается с ним)</span></td></tr>\n
+> <label><input type="checkbox" name="by_author" value="1"{s}> read or performed by the author</label> <span class="muted">(a reader is created under the author's name and linked to them)</span></td></tr>\n
+< <tr><td>Название записи</td><td><input name="title" size="40" value="{h}"> <span class="muted">без книги или стиха — обязательно; иначе — как у них</span></td></tr>\n
+> <tr><td>Recording title</td><td><input name="title" size="40" value="{h}"> <span class="muted">required without a book or poem; otherwise theirs</span></td></tr>\n
+< <tr><td>Год записи</td><td><input name="year" size="6" value="{h}"></td></tr>\n
+> <tr><td>Year recorded</td><td><input name="year" size="6" value="{h}"></td></tr>\n
+< <tr><td valign="top">Слова исполнения</td><td><textarea name="text" rows="8" cols="60" style="width:100%">{h}</textarea><br>
+> <tr><td valign="top">Words as performed</td><td><textarea name="text" rows="8" cols="60" style="width:100%">{h}</textarea><br>
+< <span class="muted">Только для исполнения: если поётся иначе, чем записано в /p/N, или текста на сайте нет. Аккорды — ChordPro: <code>[Am]слова</code>.</span></td></tr>\n
+> <span class="muted">Only for a performance: if it is sung differently from /p/N, or the text is not on the site. Chords in ChordPro: <code>[Am]words</code>.</span></td></tr>\n
+< <span class="muted">Необязательно: мелодия исполнения в ABC-нотации.</span></td></tr>\n
+> <span class="muted">Optional: the tune as performed, in ABC notation.</span></td></tr>\n
+< <tr><td>Файл</td><td><input type="file" name="file" accept="{s}"><br>
+> <tr><td>File</td><td><input type="file" name="file" accept="{s}"><br>
+< Принимается MP3
+> Accepted: MP3
+< . Всё перекодируется в MP3 128 кбит/с (MPEG-1 Layer III), как до 2003 года; до 200 МБ.</span></td></tr>\n
+> . Everything is re-encoded to MP3 at 128 kbit/s (MPEG-1 Layer III), like before 2003; up to 200 MB.</span></td></tr>\n
+< Нужно право «выкладывать книги».
+> The «upload books» right is required.
+< <h2>Загрузить запись</h2><p>Аудиокнига или исполнение стиха, песни. Книга или текст необязательны — их можно привязать позже. Чтец или исполнитель обязателен; им может быть сам автор.</p>
+> <h2>Upload a recording</h2><p>An audiobook or a performance of a poem or song. The book or text is optional — it can be linked later. A reader or performer is required; it may be the author.</p>
+< Загрузить запись
+> Upload a recording
+< Загрузить
+> Upload
+< Нужен чтец или исполнитель: выберите из списка, впишите имя нового или отметьте «читает сам автор» (тогда нужен автор).
+> A reader or performer is required: choose from the list, enter a new name or tick “read by the author” (then an author is required).
+< Без книги или стиха нужно название записи.
+> Without a book or poem the recording needs a title.
+< Номер книги — число (/b/N); можно оставить пустым.
+> The book number is a number (/b/N); it may be left empty.
+< Такой книги в библиотеке нет. Номер можно оставить пустым и привязать книгу позже.
+> There is no such book in the library. Leave the number empty and link the book later.
+< Такого стиха или песни нет. Номер можно оставить пустым и привязать текст позже.
+> There is no such poem or song. Leave the number empty and link the text later.
+< Автор не заведён.
+> The author was not created.
+< Нужен файл записи.
+> A recording file is required.
+< Файл не похож на MP3, Ogg Vorbis или M4A.
+> The file does not look like MP3, Ogg Vorbis or M4A.
+< Этот формат на сайте не принимается: сборка без него.
+> This format is not accepted on this site: the build does not include it.
+< Папка записей недоступна.
+> The recordings folder is unavailable.
+< Такой вариант формата не поддерживается (например, HE-AAC без ядра LC, Vorbis с полом 0, частота вне 4–192 кГц).
+> This variant of the format is not supported (for example, HE-AAC without an LC core, Vorbis with floor 0, a sample rate outside 4–192 kHz).
+< Запись длиннее суток.
+> The recording is longer than a day.
+< Файл повреждён: звук не разобрался.
+> The file is damaged: the sound could not be decoded.
+< Править может тот, кто загрузил, привязанный к чтецу участник, сотрудник или /u/0.
+> Can edit: the uploader, a member bound to the reader, staff or /u/0.
+< <label><input type="checkbox" name="sure" value="1"> да, удалить запись и файл насовсем</label> <input type="submit" value="Удалить"></form>
+> <label><input type="checkbox" name="sure" value="1"> yes, delete the recording and its file for good</label> <input type="submit" value="Delete"></form>
+< Удалить может тот, кто загрузил, привязанный к чтецу участник, сотрудник или /u/0.
+> Can delete: the uploader, a member bound to the reader, staff or /u/0.
+< Отметьте «да, удалить запись и файл насовсем».
+> Tick «yes, delete the recording and its file for good».
+< \n<h3>Аудиокниги</h3><ul>
+> \n<h3>Audiobooks</h3><ul>
+< \n<h3>Исполнения</h3><ul>
+> \n<h3>Performances</h3><ul>
+< читает 
+> read by 
+< исполняет 
+> performed by 
+< <p><a href="{U}/v/new?book={d}">Загрузить аудиокнигу</a></p>\n
+> <p><a href="{U}/v/new?book={d}">Upload an audiobook</a></p>\n
+< <p><a href="{U}/v/new?piece={d}">Загрузить исполнение</a></p>\n
+> <p><a href="{U}/v/new?piece={d}">Upload a performance</a></p>\n
+< Привязать аудиокнигу, выложенную без книги: 
+> Link an audiobook uploaded without a book: 
+< Привязать исполнение, выложенное без текста: 
+> Link a performance uploaded without text: 
+< <option value="{d}">/v/{d} {h} — 
+> <option value="{d}">/v/{d} {h} — 
+< </select> <input type="submit" value="Привязать"></form>\n
+> </select> <input type="submit" value="Link"></form>\n
+< Раздел записей закрыт на запись.
+> The recordings section is closed for writing.
+< Привязать может тот, кто загрузил запись, привязанный к чтецу участник, сотрудник или /u/0.
+> Linking is for whoever uploaded the recording, a member bound to the reader, staff or /u/0.
+< Запись уже привязана или другого вида.
+> The recording is already linked or of another kind.
+< <p class="muted">После публикации запись <a href="{U}/v/{d}{E}">{h}</a> будет привязана к ней.</p>
+> <p class="muted">After publishing, the recording <a href="{U}/v/{d}{E}">{h}</a> will be linked to it.</p>
+< <p>Читает и исполняет своё: 
+> <p>Reads and performs their own work: 
+< \n<h3>Записи</h3><ul>
+> \n<h3>Recordings</h3><ul>
+< <li><a href="{U}/v/{d}{E}">{h}</a> <span class="muted">· {s} · 
+> <li><a href="{U}/v/{d}{E}">{h}</a> <span class="muted">· {s} · 
+< <p>Чтец на сайте: 
+> <p>Reader on the site: 
+< <b>Привязка к чтецам</b> <span class="muted">(участник сможет править записи чтеца и его страницу)</span><br>\n
+> <b>Binding to readers</b> <span class="muted">(the member will be able to edit the reader's recordings and page)</span><br>\n
+< Привязывать участников к чтецам могут сотрудник и /u/0.
+> Only staff and /u/0 can bind members to readers.
+
+# src/route.zig
+< Форма не разобрана.
+> The form was not parsed.
+< Форма устарела или отправлена с чужого сайта (CSRF). Обновите страницу и повторите.
+> The form is stale or was sent from another site (CSRF). Reload the page and try again.
+< Раздел отключён администратором.
+> The section has been disabled by the administrator.
+
+# src/sections.zig
+< после -M, -R, -G и -N нужны буквы разделов: p (стихи), b (книги), d (черновики), f (форумы), q (цитаты), v (записи)
+> -M, -R, -G and -N need section letters: p (poems), b (books), d (drafts), f (forums), q (quotes), v (recordings)
+< после -M, -R, -G и -N нужны буквы разделов: p (стихи), b (книги), d (черновики), f (форумы), q (цитаты)
+> -M, -R, -G and -N need section letters: p (poems), b (books), d (drafts), f (forums), q (quotes)
+< неизвестный раздел: бывают p (стихи), b (книги), d (черновики), f (форумы), q (цитаты), v (записи)
+> unknown section: there are p (poems), b (books), d (drafts), f (forums), q (quotes), v (recordings)
+< неизвестный раздел: бывают p (стихи), b (книги), d (черновики), f (форумы), q (цитаты)
+> unknown section: there are p (poems), b (books), d (drafts), f (forums), q (quotes)
+< раздел из -N выключен совсем: его нельзя упоминать в -M, -R или -G
+> a section from -N is off entirely: it cannot be mentioned in -M, -R or -G
+< -N выключает все разделы: сайту нечего показать
+> -N turns off all sections: the site has nothing to show
+
+# src/snapshot.zig
+< формат снимка — little-endian
+> the snapshot format is little-endian
+
+# src/tpl.zig
+< шаблон: не закрыто {{
+> template: unclosed {{
+
+# src/tpl/flibusta/full.html
+< " width="64" height="64" alt="Главная" class="hide-m"></a>\n<div id="primary">
+> " width="64" height="64" alt="Home" class="hide-m"></a>\n<div id="primary">
+< <div class="block"><h2>Вход в систему</h2><div class="content">
+> <div class="block"><h2>Sign in</h2><div class="content">
+< ">Расширенный поиск</a></li><li>&raquo; 
+> ">Advanced search</a></li><li>&raquo; 
+< </li></ul></div></div><div class="block"><h2>Навигация</h2><div class="content"><ul>
+> </li></ul></div></div><div class="block"><h2>Navigation</h2><div class="content"><ul>
+< <div class="block"><h2>Версия</h2><div class="content">
+> <div class="block"><h2>Version</h2><div class="content">
+<  · <a href="#top">наверх</a></div>\n
+>  · <a href="#top">top</a></div>\n
+
+# src/tpl/nepomn/full.html
+< </td></tr>\n<tr><td class="left"></td><td class="sub_menu" align="right"><a href="#top">наверх</a>&nbsp;</td></tr></table>
+> </td></tr>\n<tr><td class="left"></td><td class="sub_menu" align="right"><a href="#top">top</a>&nbsp;</td></tr></table>
+
+# src/tpl/nepomn/left.html
+< ">Главная</a></li>
+> ">Home</a></li>
+< ">Адреса</a></li></ul>\n
+> ">Addresses</a></li></ul>\n
+< \n<div class="leftx"><b>Вход:</b><br>
+> \n<div class="leftx"><b>Sign in:</b><br>
+< </div>\n<div class="leftx"><b>Поиск:</b><br>
+> </div>\n<div class="leftx"><b>Search:</b><br>
+
+# src/tpl/proza/full.html
+< ">Поиск</a><a href="
+> ">Search</a><a href="
+< ">О портале</a></td></tr></table></div>\n<div class="lead">
+> ">About</a></td></tr></table></div>\n<div class="lead">
+<  — 
+>  — 
+< <h5 class="columnhead">Вход</h5><span style="font-size:14px">
+> <h5 class="columnhead">Sign in</h5><span style="font-size:14px">
+< </span><h5 class="columntitle">Поиск</h5>
+> </span><h5 class="columntitle">Search</h5>
+< <h5 class="columntitle">Разделы</h5>
+> <h5 class="columntitle">Sections</h5>
+< <h5 class="columntitle">Версия</h5>
+> <h5 class="columntitle">Version</h5>
+< ">О портале</a></div><br>Портал 
+> ">About</a></div><br>Portal 
+< . Все права принадлежат авторам. 
+> . All rights belong to the authors. 
+
+# src/tpl/samlib/full.html
+< ">Найти</a>] [<a href="
+> ">Find</a>] [<a href="
+< ">Помощь</a>]</font>\n<table width="98%"><tr><td width="30%"><hr noshade></td><td align="center" class="small" nowrap>
+> ">Help</a>]</font>\n<table width="98%"><tr><td width="30%"><hr noshade></td><td align="center" class="small" nowrap>
+< <table width="100%" cellpadding="3"><tr><td class="shead small"><b>ПОИСК:</b><br>
+> <table width="100%" cellpadding="3"><tr><td class="shead small"><b>SEARCH:</b><br>
+< <table width="100%" class="c4" cellpadding="3"><tr><td><b>ВХОД:</b></td></tr></table><div class="small" style="margin:3px 0 10px">
+> <table width="100%" class="c4" cellpadding="3"><tr><td><b>SIGN IN:</b></td></tr></table><div class="small" style="margin:3px 0 10px">
+< </div><table width="100%" class="c1" cellpadding="3"><tr><td><b>РАЗДЕЛЫ:</b></td></tr></table><div class="small" style="margin:3px 0 10px">
+> </div><table width="100%" class="c1" cellpadding="3"><tr><td><b>SECTIONS:</b></td></tr></table><div class="small" style="margin:3px 0 10px">
+< <table width="100%" class="c5" cellpadding="3"><tr><td><b>ВЕРСИЯ:</b></td></tr></table><div class="small" style="margin:3px 0 10px">
+> <table width="100%" class="c5" cellpadding="3"><tr><td><b>VERSION:</b></td></tr></table><div class="small" style="margin:3px 0 10px">
+<  · [<a href="#top">наверх</a>] [
+>  · [<a href="#top">top</a>] [
+
+# src/workers.zig
+< [clipper] воркер {d} не запущен: {s}\n
+> [clipper] worker {d} not started: {s}\n
+< [clipper] воркер {d} завершился (состояние {d}), запускаю заново\n
+> [clipper] worker {d} exited (status {d}), restarting\n
+< clipper: воркеры завершаются сразу после запуска, останавливаюсь\n
+> clipper: workers exit right after start, stopping\n
+< путь к clipper.exe не получен
+> path to clipper.exe not obtained
+< шлюз приёма соединений не создан
+> connection accept gate not created
+< [clipper] воркер {d} не запущен: ошибка Windows {d}\n
+> [clipper] worker {d} not started: Windows error {d}\n
+< ни один воркер не запустился
+> no worker started
+< ожидание воркеров прервано
+> waiting for workers was interrupted
+< [clipper] воркер {d} завершился, запускаю заново\n
+> [clipper] worker {d} exited, restarting\n
+
+# устарело: такой строки в исходниках больше нет
+< <label><input type="radio" name="kind" value="book"{s}> аудиокнига: книга номер <input name="book" size="6" value="{h}"></label> <span class="muted">(/b/N; книгу можно завести за автором и пустой)</span><br>
+> <label><input type="radio" name="kind" value="book"{s}> audiobook: book number <input name="book" size="6" value="{h}"></label> <span class="muted">(/b/N; a book may be created under the author, even empty)</span><br>
+< <label><input type="radio" name="kind" value="perf"{s}> исполнение стиха или песни номер <input name="piece" size="6" value="{h}"></label> <span class="muted">(/p/N)</span></td></tr>\n
+> <label><input type="radio" name="kind" value="perf"{s}> performance of poem or song number <input name="piece" size="6" value="{h}"></label> <span class="muted">(/p/N)</span></td></tr>\n
+< </select><br>или новый: <input name="new_reader" size="24"> годы жизни <input name="years" size="10"><br><label><input type="checkbox" name="me" value="1"> новый чтец — это я (привязать к моей учётной записи)</label></td></tr>\n
+> </select><br>or a new one: <input name="new_reader" size="24"> years of life <input name="years" size="10"><br><label><input type="checkbox" name="me" value="1"> the new reader is me (bind to my account)</label></td></tr>\n
+< <tr><td>Название записи</td><td><input name="title" size="40" value="{h}"> <span class="muted">необязательно: иначе — как у книги или стиха</span></td></tr>\n
+> <tr><td>Recording title</td><td><input name="title" size="40" value="{h}"> <span class="muted">optional: otherwise the book's or poem's title</span></td></tr>\n
+< <span class="muted">Только для стиха или песни и только если поётся иначе, чем записано в /p/N. Аккорды — ChordPro: <code>[Am]слова</code>.</span></td></tr>\n
+> <span class="muted">Only for a poem or song, and only if it is sung differently from /p/N. Chords in ChordPro: <code>[Am]words</code>.</span></td></tr>\n
+< <h2>Загрузить запись</h2><p>Аудиокнига — к книге библиотеки; исполнение — к стиху или песне. Чтец или исполнитель обязателен.</p>
+> <h2>Upload a recording</h2><p>An audiobook goes with a library book; a performance goes with a poem or song. A reader or performer is required.</p>
+< Укажите номер книги библиотеки (/b/N).
+> Give the number of a library book (/b/N).
+< Такой книги в библиотеке нет. Аудиокнига требует книги: её можно завести за автором, даже пустую.
+> There is no such book in the library. An audiobook needs a book: it can be created under the author, even empty.
+< Укажите номер стиха или песни (/p/N).
+> Give the number of a poem or song (/p/N).
+< Такого стиха или песни нет. Исполнение требует текста: сначала выложите его в /p/new.
+> There is no such poem or song. A performance needs the text: post it first at /p/new.
+< Нужен чтец или исполнитель: выберите из списка или впишите имя нового.
+> A reader or performer is required: pick one from the list or type a new name.
+< <li><a href="{U}/v/{d}{E}">{h}</a> <span class="muted">· читает 
+> <li><a href="{U}/v/{d}{E}">{h}</a> <span class="muted">· read by 
+< <li><a href="{U}/v/{d}{E}">{h}</a> <span class="muted">· исполняет 
+> <li><a href="{U}/v/{d}{E}">{h}</a> <span class="muted">· performed by 
