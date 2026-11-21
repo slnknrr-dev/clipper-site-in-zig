@@ -1,0 +1,61 @@
+# Целевые сборки и релиз.
+#
+#   тег v*            → zig build dist → zip на каждую цель → GitHub Release
+#   запуск вручную    → те же zip как артефакты прогона, без релиза
+#
+# Цели берутся из `zig build dist` (build.zig): nt-i686-en-all, nt-x86_64-en-nobook,
+# nt51-i686-ru-all, nt51-x86_64-ru-all, linux-x86_64-en-all. Подробно — DEVOPS_RU_RND.md.
+
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  dist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: mlugg/setup-zig@v2
+        with:
+          version: 0.14.1
+
+      - name: Целевые сборки
+        run: zig build dist -Doptimize=ReleaseSafe
+
+      - name: Архивы
+        run: |
+          ver="${GITHUB_REF_NAME}"
+          [ "${GITHUB_REF_TYPE}" = "tag" ] || ver="$(git rev-parse --short HEAD)"
+          mkdir -p out
+          for dir in .build/*/; do
+            target="$(basename "$dir")"
+            stage="stage/clipper-${ver}-${target}"
+            mkdir -p "$stage"
+            cp "$dir"/clipper "$dir"/clipper.exe "$stage"/ 2>/dev/null || true
+            ls "$stage"/clipper* >/dev/null   # в папке цели должен быть сервер
+            if [ -f "$stage/clipper" ]; then chmod +x "$stage/clipper"; fi   # zip сохранит бит запуска
+            cp LICENSE LICENSE-books README.md README_RU.md "$stage"/
+            (cd stage && zip -9 -r "../out/clipper-${ver}-${target}.zip" "clipper-${ver}-${target}")
+          done
+          (cd out && sha256sum *.zip > SHA256SUMS.txt)
+          ls -l out
+
+      - name: Артефакты прогона
+        uses: actions/upload-artifact@v4
+        with:
+          name: clipper-dist
+          path: out/*
+
+      - name: Релиз
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: out/*
+          generate_release_notes: true
