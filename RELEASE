@@ -1,0 +1,8 @@
+[release] v0.1.0
+
+First public release.
+
+- online library in a single executable: books, poems, songs, forums, quotes, audiobooks
+- targets: windows xp+ (x86, x86_64), windows 10+, linux x86_64
+- own http, tls 1.3, zstd, b+ tree, pdf/epub/djvu, mp3/vorbis/aac
+- known limits: see BACKLOG.md
