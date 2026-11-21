@@ -1,0 +1,30 @@
+# компилятор и сборка
+/.zig/
+.zig-cache/
+/zig-out/
+/.build/
+
+# корпус для словарей: воспроизводится `node corpus/fetch.mjs` (см. CORPUS_RU_RND.md)
+/corpus/raw/
+/corpus/ru/
+/corpus/en/
+
+# данные запущенного сайта (папка библиотеки по умолчанию — текущая)
+/books/
+/files/
+/img/
+/tmp/
+/voice/
+/*.journal
+/*.btree
+/library.*.snap
+/library.current
+/clipper*.zstd
+/FEDIVERSE.csv
+/*.pem
+/*.key
+
+# прочее
+*.log
+.DS_Store
+Thumbs.db
