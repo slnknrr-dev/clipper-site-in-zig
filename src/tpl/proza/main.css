@@ -1,0 +1,19 @@
+body{margin:0;background:var(--bg);color:var(--fg);font-family:"Times New Roman",Times,serif;font-size:17px}
+a{color:var(--link)}
+#header{padding:14px 20px 6px}
+.logo{display:inline-block;text-decoration:none;font:bold 24px "Trebuchet MS",Arial,sans-serif}
+.logo span{color:#fff;background:var(--logo);padding:2px 6px}.logo i{font-style:normal;color:#fff;background:var(--logo2);padding:2px 5px;margin-left:2px}
+.headmenu a{font:16px "Trebuchet MS",Arial,sans-serif;color:var(--menu);text-decoration:none;margin-left:14px}
+.headmenu a.active{text-decoration:underline}
+.lead{font-size:14px;color:var(--text2);padding:4px 20px 10px;border-bottom:1px solid var(--line)}
+.lead a{color:var(--link)}
+.main{padding:10px 20px 20px}
+.side{padding:10px 20px 20px;border-left:1px solid var(--line)}
+h2,h5.columnhead{font:600 27px "Trebuchet MS",Tahoma,Arial,sans-serif;color:var(--head);margin:6px 0 10px}
+h3,h5.columntitle{font:600 20px "Trebuchet MS",Tahoma,Arial,sans-serif;color:var(--head);margin:14px 0 6px}
+.side a{color:var(--menu)}
+.list th{font:600 14px "Trebuchet MS",Arial,sans-serif;color:var(--head);border-bottom:1px solid var(--line)}
+.list td{border-bottom:1px dotted var(--line)}
+input,textarea,select{border:1px solid var(--line);font-family:Verdana,Arial,Helvetica,sans-serif}
+#footer{background:var(--foot);color:var(--footFg);padding:14px 20px;font-size:12px;margin-top:20px}
+#footer .headmenu a{font-size:14px;margin:0 12px 0 0}
