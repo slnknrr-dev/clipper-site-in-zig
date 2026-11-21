@@ -1,0 +1,26 @@
+body{margin:0;background:var(--bg);color:var(--fg);font-family:Verdana,sans-serif;font-size:12px}
+a{font-weight:bold;color:var(--link);text-decoration:underline}a:hover{color:var(--hover)}
+td.left{background:var(--bg)}
+h2.autorname{font-size:14px;color:var(--accent);text-align:right;margin:15px 15px 0;font-weight:bold}
+h5.sitestatus{font-size:12px;text-align:right;margin:0 15px;font-weight:normal}
+td.pagename{background:var(--panel);height:40px}
+h1.pagename{font-size:16px;color:var(--accent);text-align:right;margin:0 15px 0 0;text-transform:uppercase}
+.logo{display:block;margin:0 auto 15px;border:3px solid #fff}
+ul.menu{margin:0 15px 0 30px;padding:0}
+li.menu{color:var(--accent);font-size:14px}
+a.menu,li.menu a{font-weight:normal;text-decoration:none;color:var(--accent);font-size:14px}a.menu:hover{color:var(--accentHover)}
+a.menu.active{font-weight:bold}
+td.sub_menu{background:var(--sub);height:30px;padding-left:20px;font-size:12px}
+td.sub_menu a{text-decoration:none;color:var(--subFg);font-weight:normal}
+td.maincontent{background:var(--panel);padding:10px 20px 40px}
+.leftx{margin:15px;font-size:11px}.leftx b{color:var(--accent)}
+.leftx a{font-weight:normal}
+.main h2{font:italic bold 20px Arial,sans-serif;color:var(--accent);margin:0 0 6px}
+.main h3{font-size:13px;color:var(--accent)}
+.list th{font-size:11px;font-weight:bold;text-align:center}
+.list tr:nth-child(even) td{background:var(--rowDark)}.list tr:nth-child(odd) td{background:var(--rowLight)}
+.list td{font-size:11px;text-indent:10px}
+.box{background:var(--sub);border:0}
+.verse{font-family:Times,serif;font-size:14px}
+input,textarea,select{border:1px solid var(--subFg)}
+.mob td.left .logo{display:none}
